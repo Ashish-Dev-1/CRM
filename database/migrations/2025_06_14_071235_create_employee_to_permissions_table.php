@@ -1,0 +1,29 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('employee_to_permissions', function (Blueprint $table) {
+            $table->integer('employee_to_permissions_id')->primary();
+            $table->integer('employee_id')->nullable();
+            $table->tinyInteger('employee_permissions_id')->nullable();
+             // Foreign keys
+            $table->foreign('employee_id', 'fk_employee_to_permissions_employee_id')
+                ->references('employee_id')->on('employee')
+                ->onUpdate('no action')->onDelete('no action');
+            $table->foreign('employee_permissions_id', 'fk_employee_to_permissions_employee_permissions_id')
+                ->references('employee_permissions_id')->on('employee_permissions')
+                ->onUpdate('cascade')->onDelete('restrict');
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('employee_to_permissions');
+    }
+};
