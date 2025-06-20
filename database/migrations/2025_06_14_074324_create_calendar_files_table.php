@@ -15,8 +15,8 @@ return new class extends Migration
         Schema::create('calendar_files', function (Blueprint $table) {
             $table->integer('calendar_files_id', true);
             $table->integer('calendar_event_id')->nullable();
-            $table->string('calendar_files_filename', 255)->nullable()->charset('utf8mb3')->collation('utf8mb3_general_ci');
-            $table->string('calendar_files_caption', 100)->nullable()->charset('utf8mb3')->collation('utf8mb3_general_ci');
+            $table->string('calendar_files_filename', 255)->nullable();
+            $table->string('calendar_files_caption', 100)->nullable();
             $table->dateTime('calendar_files_date_added')->nullable();
             $table->mediumInteger('calendar_files_sort')->nullable();
             

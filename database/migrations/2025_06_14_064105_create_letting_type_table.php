@@ -6,15 +6,21 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+        /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('letting_type', function (Blueprint $table) {
             $table->increments('letting_type_id');
-            $table->string('letting_type_name', 10)->nullable()->charset('latin1');
+            $table->string('letting_type_name', 10)->nullable();
         });
     }
 
     /**
+     * Reverse the migrations.
+     */
+        /**
      * Reverse the migrations.
      */
     public function down(): void

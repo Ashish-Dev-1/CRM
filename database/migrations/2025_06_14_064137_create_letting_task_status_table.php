@@ -6,7 +6,10 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-     public function up(): void
+         /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
         Schema::create('letting_task_status', function (Blueprint $table) {
             $table->tinyIncrements('letting_task_status_id');
@@ -15,6 +18,9 @@ return new class extends Migration
     }
 
     /**
+     * Reverse the migrations.
+     */
+        /**
      * Reverse the migrations.
      */
     public function down(): void

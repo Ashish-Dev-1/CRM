@@ -8,39 +8,92 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class SaleTask extends Model
 {
     protected $table = 'sale_task';
-    protected $primaryKey = 'sale_task_id';
+    protected $primaryKey = 'integer';
     public $timestamps = false;
 
-    protected $fillable = [
-        'sale_task_sale',
+        protected $fillable = [
+        'sale_id',
         'sale_task_type',
-        'sale_task_title',
-        'sale_task_description',
-        'sale_task_date',
+        'sale_task_name',
         'sale_task_status',
-        'sale_task_employee',
-        'sale_task_date_created',
+        'sale_task_target_date',
+        'sale_task_completed_date',
+        'sale_task_notes',
+        'sale_task_notes_private',
+        'sale_task_sort',
+        'sale_task_vendor_notified',
+        'sale_task_buyer_notified',
         'sale_task_date_updated',
-        'sale_task_created_by',
         'sale_task_updated_by',
     ];
 
-    protected $dates = [
-        'sale_task_date',
-        'sale_task_date_created',
+    protected $casts = [
+        'sale_id' => 'integer',
+        'sale_task_type' => 'integer',
+        'sale_task_status' => 'integer',
+        'sale_task_target_date' => 'date',
+        'sale_task_completed_date' => 'date',
+        'sale_task_sort' => 'integer',
+        'sale_task_vendor_notified' => 'integer',
+        'sale_task_buyer_notified' => 'integer',
+        'sale_task_date_updated' => 'datetime',
+        'sale_task_updated_by' => 'integer',
+    ];
+
+        protected $dates = [
+        'sale_task_target_date',
+        'sale_task_completed_date',
         'sale_task_date_updated',
     ];
 
     /**
      * Get the sale that this task belongs to.
      */
-    public function sale(): BelongsTo
-    {
-        return $this->belongsTo(Sale::class, 'sale_task_sale', 'sale_id');
-    }
+    
 
     /**
      * Get the type of this task.
+     */
+    
+
+    /**
+     * Get the status of this task.
+     */
+    
+
+    /**
+     * Get the employee assigned to this task.
+     */
+    
+
+    /**
+     * Get the employee who created this task.
+     */
+    
+
+    /**
+     * Get the employee who updated this task.
+     */
+    
+
+    /**
+     * Get the Employee associated with this record.
+     */
+    public function by(): BelongsTo
+    {
+        return $this->belongsTo(Employee::class, 'sale_task_updated_by', 'employee_id');
+    }
+
+    /**
+     * Get the Sale associated with this record.
+     */
+    public function id(): BelongsTo
+    {
+        return $this->belongsTo(Sale::class, 'sale_id', 'sale_id');
+    }
+
+    /**
+     * Get the SaleTaskType associated with this record.
      */
     public function type(): BelongsTo
     {
@@ -48,34 +101,10 @@ class SaleTask extends Model
     }
 
     /**
-     * Get the status of this task.
+     * Get the SaleTaskStatus associated with this record.
      */
     public function status(): BelongsTo
     {
         return $this->belongsTo(SaleTaskStatus::class, 'sale_task_status', 'sale_task_status_id');
-    }
-
-    /**
-     * Get the employee assigned to this task.
-     */
-    public function employee(): BelongsTo
-    {
-        return $this->belongsTo(Employee::class, 'sale_task_employee', 'employee_id');
-    }
-
-    /**
-     * Get the employee who created this task.
-     */
-    public function createdBy(): BelongsTo
-    {
-        return $this->belongsTo(Employee::class, 'sale_task_created_by', 'employee_id');
-    }
-
-    /**
-     * Get the employee who updated this task.
-     */
-    public function updatedBy(): BelongsTo
-    {
-        return $this->belongsTo(Employee::class, 'sale_task_updated_by', 'employee_id');
     }
 }

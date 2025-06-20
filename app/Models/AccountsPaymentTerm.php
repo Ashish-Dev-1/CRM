@@ -16,11 +16,39 @@ class AccountsPaymentTerm extends Model
         'accounts_payment_term_sort',
     ];
 
+    protected $casts = [
+        'accounts_payment_term_sort' => 'integer',
+    ];
+
     /**
      * Get the directory entries that use these payment terms.
      */
     public function directories(): HasMany
     {
         return $this->hasMany(Directory::class, 'directory_payment_terms', 'accounts_payment_term_id');
+    }
+
+    /**
+     * Get the invoices that use these payment terms.
+     */
+    public function invoices(): HasMany
+    {
+        return $this->hasMany(AccountsInvoice::class, 'invoice_payment_terms', 'accounts_payment_term_id');
+    }
+
+    /**
+     * Get the tenant charges that use these payment terms.
+     */
+    public function tenantCharges(): HasMany
+    {
+        return $this->hasMany(AccountsTenantCharge::class, 'tenant_charge_payment_terms', 'accounts_payment_term_id');
+    }
+
+    /**
+     * Get the tenant deposit charges that use these payment terms.
+     */
+    public function tenantDepositCharges(): HasMany
+    {
+        return $this->hasMany(AccountsTenantDepositCharge::class, 'tenant_deposit_charge_payment_terms', 'accounts_payment_term_id');
     }
 }

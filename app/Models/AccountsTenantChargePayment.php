@@ -7,18 +7,18 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class AccountsTenantChargePayment extends Model
 {
-    protected $table = 'accounts_tenant_charge_payment';
+    protected $table = 'accounts_tenant_charge_payments';
     protected $primaryKey = 'tenant_charge_payment_id';
     public $timestamps = false;
 
     protected $fillable = [
-        'tenant_charge_payment_charge',
         'tenant_charge_payment_date',
         'tenant_charge_payment_amount',
         'tenant_charge_payment_method',
-        'tenant_charge_payment_type',
-        'tenant_charge_payment_reference',
+        'tenant_charge_payment_tenant_charge_id',
         'tenant_charge_payment_notes',
+        'accounts_tenant_charge_payment_type',
+        'tenant_charge_housing_benefit',
         'tenant_charge_payment_date_created',
         'tenant_charge_payment_date_updated',
         'tenant_charge_payment_created_by',
@@ -31,12 +31,22 @@ class AccountsTenantChargePayment extends Model
         'tenant_charge_payment_date_updated',
     ];
 
+    protected $casts = [
+        'tenant_charge_payment_amount' => 'decimal:2',
+        'tenant_charge_payment_method' => 'integer',
+        'tenant_charge_payment_tenant_charge_id' => 'integer',
+        'accounts_tenant_charge_payment_type' => 'integer',
+        'tenant_charge_housing_benefit' => 'integer',
+        'tenant_charge_payment_created_by' => 'integer',
+        'tenant_charge_payment_updated_by' => 'integer',
+    ];
+
     /**
      * Get the tenant charge that this payment belongs to.
      */
-    public function charge(): BelongsTo
+    public function tenantCharge(): BelongsTo
     {
-        return $this->belongsTo(AccountsTenantCharge::class, 'tenant_charge_payment_charge', 'tenant_charge_id');
+        return $this->belongsTo(AccountsTenantCharge::class, 'tenant_charge_payment_tenant_charge_id', 'tenant_charge_id');
     }
 
     /**
@@ -52,7 +62,7 @@ class AccountsTenantChargePayment extends Model
      */
     public function paymentType(): BelongsTo
     {
-        return $this->belongsTo(AccountsTenantChargePaymentType::class, 'tenant_charge_payment_type', 'accounts_tenant_charge_payment_type_id');
+        return $this->belongsTo(AccountsTenantChargePaymentType::class, 'accounts_tenant_charge_payment_type', 'accounts_tenant_charge_payment_type_id');
     }
 
     /**

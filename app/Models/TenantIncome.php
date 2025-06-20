@@ -11,14 +11,17 @@ class TenantIncome extends Model
     protected $primaryKey = 'tenant_income_id';
     public $timestamps = false;
 
-    protected $fillable = [
-        'tenant_income_tenant',
+        protected $fillable = [
+        'tenant_income_id',
+        'tenant_income_tenant_id',
         'tenant_income_amount',
         'tenant_income_frequency',
-        'tenant_income_date_created',
-        'tenant_income_date_updated',
-        'tenant_income_created_by',
-        'tenant_income_updated_by',
+        'tenant_income_source',
+    ];
+
+    protected $casts = [
+        'tenant_income_amount' => 'decimal:2',
+        'tenant_income_frequency' => 'integer',
     ];
 
     protected $dates = [
@@ -29,32 +32,36 @@ class TenantIncome extends Model
     /**
      * Get the tenant that owns the income record.
      */
-    public function tenant(): BelongsTo
-    {
-        return $this->belongsTo(Tenant::class, 'tenant_income_tenant', 'tenant_id');
-    }
+    
 
     /**
      * Get the frequency of the income.
      */
-    public function frequency(): BelongsTo
-    {
-        return $this->belongsTo(IncomeFrequency::class, 'tenant_income_frequency', 'income_frequency_id');
-    }
+    
 
     /**
      * Get the employee who created the income record.
      */
-    public function createdBy(): BelongsTo
-    {
-        return $this->belongsTo(Employee::class, 'tenant_income_created_by', 'employee_id');
-    }
+    
 
     /**
      * Get the employee who updated the income record.
      */
-    public function updatedBy(): BelongsTo
+    
+
+    /**
+     * Get the Tenant associated with this record.
+     */
+    public function id(): BelongsTo
     {
-        return $this->belongsTo(Employee::class, 'tenant_income_updated_by', 'employee_id');
+        return $this->belongsTo(Tenant::class, 'tenant_income_tenant_id', 'tenant_id');
+    }
+
+    /**
+     * Get the IncomeFrequency associated with this record.
+     */
+    public function frequency(): BelongsTo
+    {
+        return $this->belongsTo(IncomeFrequency::class, 'tenant_income_frequency', 'income_frequency_id');
     }
 }

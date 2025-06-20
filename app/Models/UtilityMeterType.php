@@ -11,16 +11,13 @@ class UtilityMeterType extends Model
     protected $primaryKey = 'utility_meter_type_id';
     public $timestamps = false;
 
-    protected $fillable = [
+        protected $fillable = [
+        'utility_meter_type_id',
         'utility_meter_type_name',
-        'utility_meter_type_description',
     ];
 
     /**
      * Get the utility meters with this type.
      */
-    public function meters(): HasMany
-    {
-        return $this->hasMany(UtilityMeter::class, 'utility_meter_type', 'utility_meter_type_id');
-    }
+    
 }

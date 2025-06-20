@@ -5,14 +5,17 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
+        /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('tenancy_tenants', function (Blueprint $table) {
             $table->id('tenancy_tenants_id');
-            $table->unsignedInteger('tenant_id')->nullable();
-            $table->unsignedInteger('tenancy_id')->nullable();
+            $table->integer('tenant_id')->nullable();
+            $table->integer('tenancy_id')->nullable();
             $table->tinyInteger('tenant_lead')->nullable();
-            $table->unsignedInteger('property_id')->nullable();
+            $table->integer('property_id')->nullable();
 
             $table->foreign('tenant_id', 'fk_tenancy_tenants_tenant_id')
                 ->references('tenant_id')->on('tenant')
@@ -26,6 +29,9 @@ return new class extends Migration {
         });
     }
 
+        /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
         Schema::dropIfExists('tenancy_tenants');

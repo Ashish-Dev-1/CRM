@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAccountsInvoiceStatusTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -24,4 +24,4 @@ class CreateAccountsInvoiceStatusTable extends Migration
     {
         Schema::dropIfExists('accounts_invoice_status');
     }
-}
+};

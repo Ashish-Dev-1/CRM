@@ -5,11 +5,14 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
+        /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('suburb', function (Blueprint $table) {
             $table->integer('suburb_id')->primary();
-            $table->string('suburb_name', 60)->charset('latin1')->collation('latin1_swedish_ci')->nullable();
+            $table->string('suburb_name', 60)->nullable();
             $table->text('suburb_description')->nullable();
             $table->integer('suburb_branch')->nullable();
             $table->boolean('suburb_active')->default(true);
@@ -21,6 +24,9 @@ return new class extends Migration {
         });
     }
 
+        /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
         Schema::dropIfExists('suburb');

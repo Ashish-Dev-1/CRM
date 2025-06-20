@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class AccountsVatRate extends Model
 {
-    protected $table = 'accounts_vat_rate';
+    protected $table = 'accounts_vat_rates';
     protected $primaryKey = 'vat_rate_id';
     public $timestamps = false;
 
@@ -49,5 +49,21 @@ class AccountsVatRate extends Model
     public function invoiceLines(): HasMany
     {
         return $this->hasMany(AccountsInvoiceLine::class, 'invoice_line_vat_rate', 'vat_rate_id');
+    }
+
+    /**
+     * Get the invoice credit lines that use this VAT rate.
+     */
+    public function invoiceCreditLines(): HasMany
+    {
+        return $this->hasMany(AccountsInvoiceCreditLine::class, 'invoice_credit_line_vat_rate', 'vat_rate_id');
+    }
+
+    /**
+     * Get the BACS files that use this VAT rate.
+     */
+    public function bacsFiles(): HasMany
+    {
+        return $this->hasMany(AccountsBacsFile::class, 'bacs_file_vat_rate', 'vat_rate_id');
     }
 }

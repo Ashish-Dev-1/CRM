@@ -20,6 +20,13 @@ class AccountsNominalCode extends Model
         'nominal_code_archive',
     ];
 
+    protected $casts = [
+        'nominal_code_type' => 'integer',
+        'nominal_code_external_id' => 'integer',
+        'nominal_code_default_vat_rate' => 'integer',
+        'nominal_code_archive' => 'integer',
+    ];
+
     /**
      * Get the type of this nominal code.
      */
@@ -34,14 +41,6 @@ class AccountsNominalCode extends Model
     public function defaultVatRate(): BelongsTo
     {
         return $this->belongsTo(AccountsVatRate::class, 'nominal_code_default_vat_rate', 'vat_rate_id');
-    }
-
-    /**
-     * Get the invoices that use this nominal code.
-     */
-    public function invoices(): HasMany
-    {
-        return $this->hasMany(AccountsInvoice::class, 'invoice_nominal_code', 'nominal_code_id');
     }
 
     /**
@@ -65,7 +64,7 @@ class AccountsNominalCode extends Model
      */
     public function invoiceLineDescriptions(): HasMany
     {
-        return $this->hasMany(AccountsInvoiceLineDescription::class, 'invoice_line_description_default_nominal_code', 'nominal_code_id');
+        return $this->hasMany(AccountsInvoiceLineDescription::class, 'invoice_line_nominal_code', 'nominal_code_id');
     }
 
     /**

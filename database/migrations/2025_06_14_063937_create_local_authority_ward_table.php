@@ -6,7 +6,10 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-   public function up(): void
+       /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
         Schema::create('local_authority_ward', function (Blueprint $table) {
             $table->increments('local_authority_ward_id');
@@ -24,6 +27,9 @@ return new class extends Migration
     }
 
     /**
+     * Reverse the migrations.
+     */
+        /**
      * Reverse the migrations.
      */
     public function down(): void

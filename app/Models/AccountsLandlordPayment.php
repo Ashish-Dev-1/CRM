@@ -12,14 +12,11 @@ class AccountsLandlordPayment extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'landlord_payment_landlord',
-        'landlord_payment_property',
         'landlord_payment_date',
+        'landlord_payment_tenancy_id',
         'landlord_payment_amount',
         'landlord_payment_method',
-        'landlord_payment_reference',
         'landlord_payment_notes',
-        'landlord_payment_bacs_file',
         'landlord_payment_date_created',
         'landlord_payment_date_updated',
         'landlord_payment_created_by',
@@ -32,20 +29,23 @@ class AccountsLandlordPayment extends Model
         'landlord_payment_date_updated',
     ];
 
-    /**
-     * Get the landlord that received this payment.
-     */
-    public function landlord(): BelongsTo
-    {
-        return $this->belongsTo(Landlord::class, 'landlord_payment_landlord', 'landlord_id');
-    }
+    protected $casts = [
+        'landlord_payment_date' => 'date',
+        'landlord_payment_tenancy_id' => 'integer',
+        'landlord_payment_amount' => 'decimal:2',
+        'landlord_payment_method' => 'integer',
+        'landlord_payment_date_created' => 'datetime',
+        'landlord_payment_date_updated' => 'datetime',
+        'landlord_payment_created_by' => 'integer',
+        'landlord_payment_updated_by' => 'integer',
+    ];
 
     /**
-     * Get the property associated with this payment, if any.
+     * Get the tenancy associated with this payment.
      */
-    public function property(): BelongsTo
+    public function tenancy(): BelongsTo
     {
-        return $this->belongsTo(Property::class, 'landlord_payment_property', 'property_id');
+        return $this->belongsTo(Tenancy::class, 'landlord_payment_tenancy_id', 'tenancy_id');
     }
 
     /**
@@ -54,14 +54,6 @@ class AccountsLandlordPayment extends Model
     public function paymentMethod(): BelongsTo
     {
         return $this->belongsTo(AccountsPaymentMethod::class, 'landlord_payment_method', 'payment_method_id');
-    }
-
-    /**
-     * Get the BACS file that included this payment, if applicable.
-     */
-    public function bacsFile(): BelongsTo
-    {
-        return $this->belongsTo(AccountsBacsFile::class, 'landlord_payment_bacs_file', 'bacs_file_id');
     }
 
     /**

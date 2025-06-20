@@ -13,7 +13,6 @@ class AccountsTenantChargeLineType extends Model
 
     protected $fillable = [
         'tenant_charge_line_type_name',
-        'tenant_charge_line_type_description',
     ];
 
     /**

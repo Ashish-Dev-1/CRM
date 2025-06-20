@@ -13,8 +13,6 @@ class AccountsPaymentMethod extends Model
 
     protected $fillable = [
         'payment_method_name',
-        'payment_method_description',
-        'payment_method_sort',
     ];
 
     /**
@@ -46,6 +44,6 @@ class AccountsPaymentMethod extends Model
      */
     public function tenantDepositChargePayments(): HasMany
     {
-        return $this->hasMany(AccountsTenantDepositCharge::class, 'tenant_deposit_charge_payment_method', 'tenant_deposit_charge_id');
+        return $this->hasMany(AccountTenantDepositChargePayment::class, 'tenant_deposit_charge_payment_method', 'payment_method_id');
     }
 }

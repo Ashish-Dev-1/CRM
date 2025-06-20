@@ -13,7 +13,6 @@ class ApplicantLeadSource extends Model
 
     protected $fillable = [
         'applicant_lead_source_name',
-        'applicant_lead_source_description',
     ];
 
     /**

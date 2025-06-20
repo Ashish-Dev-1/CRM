@@ -11,14 +11,16 @@ class TenancyTenants extends Model
     protected $primaryKey = 'tenancy_tenants_id';
     public $timestamps = false;
 
-    protected $fillable = [
-        'tenancy_tenants_tenancy',
-        'tenancy_tenants_tenant',
-        'tenancy_tenants_lead',
-        'tenancy_tenants_date_created',
-        'tenancy_tenants_date_updated',
-        'tenancy_tenants_created_by',
-        'tenancy_tenants_updated_by',
+        protected $fillable = [
+        'tenancy_tenants_id',
+        'tenant_id',
+        'tenancy_id',
+        'tenant_lead',
+        'property_id',
+    ];
+
+    protected $casts = [
+        'tenant_lead' => 'integer',
     ];
 
     protected $dates = [
@@ -29,32 +31,44 @@ class TenancyTenants extends Model
     /**
      * Get the tenancy that owns the tenant relationship.
      */
-    public function tenancy(): BelongsTo
-    {
-        return $this->belongsTo(Tenancy::class, 'tenancy_tenants_tenancy', 'tenancy_id');
-    }
+    
 
     /**
      * Get the tenant associated with the tenancy.
      */
-    public function tenant(): BelongsTo
-    {
-        return $this->belongsTo(Tenant::class, 'tenancy_tenants_tenant', 'tenant_id');
-    }
+    
 
     /**
      * Get the employee who created the tenancy tenant record.
      */
-    public function createdBy(): BelongsTo
-    {
-        return $this->belongsTo(Employee::class, 'tenancy_tenants_created_by', 'employee_id');
-    }
+    
 
     /**
      * Get the employee who updated the tenancy tenant record.
      */
-    public function updatedBy(): BelongsTo
+    
+
+    /**
+     * Get the Tenant associated with this record.
+     */
+    public function id(): BelongsTo
     {
-        return $this->belongsTo(Employee::class, 'tenancy_tenants_updated_by', 'employee_id');
+        return $this->belongsTo(Tenant::class, 'tenant_id', 'tenant_id');
+    }
+
+    /**
+     * Get the Tenancy associated with this record.
+     */
+    public function id(): BelongsTo
+    {
+        return $this->belongsTo(Tenancy::class, 'tenancy_id', 'tenancy_id');
+    }
+
+    /**
+     * Get the Property associated with this record.
+     */
+    public function id(): BelongsTo
+    {
+        return $this->belongsTo(Property::class, 'property_id', 'property_id');
     }
 }

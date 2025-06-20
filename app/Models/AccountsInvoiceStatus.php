@@ -8,19 +8,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class AccountsInvoiceStatus extends Model
 {
     protected $table = 'accounts_invoice_status';
-    protected $primaryKey = 'invoice_status_id';
+    protected $primaryKey = 'tinyInteger';
     public $timestamps = false;
 
-    protected $fillable = [
+        protected $fillable = [
         'invoice_status_name',
-        'invoice_status_description',
     ];
 
     /**
      * Get the invoices with this status.
      */
-    public function invoices(): HasMany
-    {
-        return $this->hasMany(AccountsInvoice::class, 'invoice_status', 'invoice_status_id');
-    }
+    
 }

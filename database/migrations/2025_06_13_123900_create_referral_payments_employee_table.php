@@ -5,19 +5,22 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
+        /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('referral_payments_employee', function (Blueprint $table) {
             $table->id('referral_payments_employee_id'); // int(11) PRIMARY KEY
-            $table->unsignedInteger('referral_payments_employee_referral_id')->nullable();
-            $table->unsignedTinyInteger('referral_payments_employee_payment_type')->nullable();
-            $table->unsignedInteger('referral_payments_employee_employee_id')->nullable();
+            $table->integer('referral_payments_employee_referral_id')->nullable();
+            $table->tinyInteger('referral_payments_employee_payment_type')->nullable();
+            $table->integer('referral_payments_employee_employee_id')->nullable();
             $table->decimal('referral_payments_employee_amount', 10, 2)->nullable();
             $table->date('referral_payments_employee_date_paid')->nullable();
             $table->dateTime('referral_payments_employee_date_created')->nullable();
             $table->dateTime('referral_payments_employee_date_updated')->nullable();
-            $table->unsignedInteger('referral_payments_employee_created_by')->nullable();
-            $table->unsignedInteger('referral_payments_employee_updated_by')->nullable();
+            $table->integer('referral_payments_employee_created_by')->nullable();
+            $table->integer('referral_payments_employee_updated_by')->nullable();
 
             // Note: The following FK is unusual, as it links the PK to employee_id.
             // Normally, you'd link referral_payments_employee_employee_id to employee.employee_id.
@@ -39,6 +42,9 @@ return new class extends Migration {
         });
     }
 
+        /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
         Schema::dropIfExists('referral_payments_employee');

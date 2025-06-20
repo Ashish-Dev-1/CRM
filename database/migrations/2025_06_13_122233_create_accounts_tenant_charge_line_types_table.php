@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAccountsTenantChargeLineTypeTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -24,4 +24,4 @@ class CreateAccountsTenantChargeLineTypeTable extends Migration
     {
         Schema::dropIfExists('accounts_tenant_charge_line_type');
     }
-}
+};

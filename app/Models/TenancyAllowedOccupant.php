@@ -8,18 +8,21 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class TenancyAllowedOccupant extends Model
 {
     protected $table = 'tenancy_allowed_occupant';
-    protected $primaryKey = 'tenancy_allowed_occupant_id';
+    protected $primaryKey = 'integer';
     public $timestamps = false;
 
-    protected $fillable = [
-        'tenancy_allowed_occupant_tenancy',
-        'tenancy_allowed_occupant_name',
-        'tenancy_allowed_occupant_relationship',
-        'tenancy_allowed_occupant_age',
-        'tenancy_allowed_occupant_date_created',
-        'tenancy_allowed_occupant_date_updated',
-        'tenancy_allowed_occupant_created_by',
-        'tenancy_allowed_occupant_updated_by',
+        protected $fillable = [
+        'tenancy_id',
+        'tenancy_allowed_occupant_title',
+        'tenancy_allowed_occupant_first_name',
+        'tenancy_allowed_occupant_surname',
+        'tenancy_allowed_occupant_phone_number',
+        'tenancy_allowed_occupant_email_address',
+    ];
+
+    protected $casts = [
+        'tenancy_id' => 'integer',
+        'tenancy_allowed_occupant_title' => 'integer',
     ];
 
     protected $dates = [
@@ -30,24 +33,31 @@ class TenancyAllowedOccupant extends Model
     /**
      * Get the tenancy that this occupant belongs to.
      */
-    public function tenancy(): BelongsTo
-    {
-        return $this->belongsTo(Tenancy::class, 'tenancy_allowed_occupant_tenancy', 'tenancy_id');
-    }
+    
 
     /**
      * Get the employee who created this occupant.
      */
-    public function createdBy(): BelongsTo
-    {
-        return $this->belongsTo(Employee::class, 'tenancy_allowed_occupant_created_by', 'employee_id');
-    }
+    
 
     /**
      * Get the employee who updated this occupant.
      */
-    public function updatedBy(): BelongsTo
+    
+
+    /**
+     * Get the Title associated with this record.
+     */
+    public function title(): BelongsTo
     {
-        return $this->belongsTo(Employee::class, 'tenancy_allowed_occupant_updated_by', 'employee_id');
+        return $this->belongsTo(Title::class, 'tenancy_allowed_occupant_title', 'title_id');
+    }
+
+    /**
+     * Get the Tenancy associated with this record.
+     */
+    public function id(): BelongsTo
+    {
+        return $this->belongsTo(Tenancy::class, 'tenancy_id', 'tenancy_id');
     }
 }

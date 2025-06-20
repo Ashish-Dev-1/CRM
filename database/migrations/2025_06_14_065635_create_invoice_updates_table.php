@@ -6,7 +6,10 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-     public function up(): void
+         /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
         Schema::create('invoice_updates', function (Blueprint $table) {
             $table->increments('invoice_updates_id');
@@ -26,6 +29,9 @@ return new class extends Migration
     }
 
     /**
+     * Reverse the migrations.
+     */
+        /**
      * Reverse the migrations.
      */
     public function down(): void

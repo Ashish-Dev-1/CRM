@@ -5,11 +5,14 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
+        /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('tenant_income', function (Blueprint $table) {
             $table->id('tenant_income_id');
-            $table->unsignedBigInteger('tenant_income_tenant_id')->nullable();
+            $table->bigInteger('tenant_income_tenant_id')->nullable();
             $table->decimal('tenant_income_amount', 10, 2)->nullable();
             $table->tinyInteger('tenant_income_frequency')->nullable();
             $table->string('tenant_income_source')->nullable();
@@ -23,6 +26,9 @@ return new class extends Migration {
         });
     }
 
+        /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
         Schema::dropIfExists('tenant_income');

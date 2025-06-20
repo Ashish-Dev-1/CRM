@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('certificate_development_files', function (Blueprint $table) {
             $table->integer('file_id', true);
             $table->integer('certificate_id');
-            $table->string('filename', 100)->charset('utf8mb3')->collation('utf8mb3_general_ci');
+            $table->string('filename', 100);
             $table->dateTime('date_added')->nullable();
             $table->tinyInteger('sort')->nullable();
             $table->string('caption', 250)->nullable();

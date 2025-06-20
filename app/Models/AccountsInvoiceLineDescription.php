@@ -9,62 +9,62 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class AccountsInvoiceLineDescription extends Model
 {
     protected $table = 'accounts_invoice_line_description';
-    protected $primaryKey = 'invoice_line_description_id';
+    protected $primaryKey = 'tinyInteger';
     public $timestamps = false;
 
-    protected $fillable = [
+        protected $fillable = [
         'invoice_line_description_name',
-        'invoice_line_description_text',
-        'invoice_line_description_category',
-        'invoice_line_description_default_unit_price',
-        'invoice_line_description_default_vat_rate',
-        'invoice_line_description_default_nominal_code',
         'invoice_line_description_sort',
-        'invoice_line_description_archived',
-        'invoice_line_description_branch',
+        'invoice_line_nominal_code',
+        'invoice_line_description_category',
+        'invoice_line_description_amount',
+    ];
+
+    protected $casts = [
+        'invoice_line_description_sort' => 'integer',
+        'invoice_line_nominal_code' => 'integer',
+        'invoice_line_description_category' => 'integer',
+        'invoice_line_description_amount' => 'decimal:2',
     ];
 
     /**
      * Get the category for this description.
      */
-    public function category(): BelongsTo
-    {
-        return $this->belongsTo(
-            AccountsInvoiceLineDescriptionCategory::class, 
-            'invoice_line_description_category', 
-            'invoice_line_description_category_id'
-        );
-    }
+    
 
     /**
      * Get the default VAT rate for this description.
      */
-    public function defaultVatRate(): BelongsTo
-    {
-        return $this->belongsTo(AccountsVatRate::class, 'invoice_line_description_default_vat_rate', 'vat_rate_id');
-    }
+    
 
     /**
      * Get the default nominal code for this description.
      */
-    public function defaultNominalCode(): BelongsTo
-    {
-        return $this->belongsTo(AccountsNominalCode::class, 'invoice_line_description_default_nominal_code', 'nominal_code_id');
-    }
+    
 
     /**
      * Get the branch associated with this description.
      */
-    public function branch(): BelongsTo
-    {
-        return $this->belongsTo(Branch::class, 'invoice_line_description_branch', 'branch_id');
-    }
+    
 
     /**
      * Get the invoice lines that use this description.
      */
-    public function invoiceLines(): HasMany
+    
+
+    /**
+     * Get the AccountsInvoiceLineDescriptionCategory associated with this record.
+     */
+    public function category(): BelongsTo
     {
-        return $this->hasMany(AccountsInvoiceLine::class, 'invoice_line_description', 'invoice_line_description_id');
+        return $this->belongsTo(AccountsInvoiceLineDescriptionCategory::class, 'invoice_line_description_category', 'invoice_line_description_category_id');
+    }
+
+    /**
+     * Get the AccountsNominalCode associated with this record.
+     */
+    public function code(): BelongsTo
+    {
+        return $this->belongsTo(AccountsNominalCode::class, 'invoice_line_nominal_code', 'nominal_code_id');
     }
 }

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->tinyInteger('applicant_requirement_filter_id')->primary();
             $table->string('applicant_requirement_filter_name', 15)->nullable();
             $table->string('applicant_requirement_filter_description', 100)->nullable();
-            $table->tinyInteger('applicant_requirement_filter_sort', 1)->nullable();
+            $table->tinyInteger('applicant_requirement_filter_sort')->nullable();
         });
     }
 

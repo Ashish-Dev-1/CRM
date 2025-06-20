@@ -15,7 +15,7 @@ return new class extends Migration
             $table->integer('application_applicant_id')->primary();
             $table->integer('application_id')->nullable();
             $table->tinyInteger('application_applicant_type')->nullable();
-            $table->tinyInteger('application_homeowner', 1)->nullable();
+            $table->tinyInteger('application_homeowner')->nullable();
             $table->tinyInteger('application_title')->nullable();
             $table->string('application_first_name', 255)->nullable();
             $table->string('application_surname', 255)->nullable();

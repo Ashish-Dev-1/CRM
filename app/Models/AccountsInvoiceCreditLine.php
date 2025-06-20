@@ -12,17 +12,20 @@ class AccountsInvoiceCreditLine extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'invoice_credit_line_credit',
+        'invoice_credit_id',
         'invoice_credit_line_description',
-        'invoice_credit_line_quantity',
-        'invoice_credit_line_unit_price',
+        'invoice_credit_line_amount',
         'invoice_credit_line_vat_rate',
+        'invoice_credit_line_vat_amount',
         'invoice_credit_line_nominal_code',
-        'invoice_credit_line_display_order',
-        'invoice_credit_line_date_created',
-        'invoice_credit_line_date_updated',
-        'invoice_credit_line_created_by',
-        'invoice_credit_line_updated_by',
+    ];
+
+    protected $casts = [
+        'invoice_credit_id' => 'integer',
+        'invoice_credit_line_amount' => 'decimal:2',
+        'invoice_credit_line_vat_rate' => 'integer',
+        'invoice_credit_line_vat_amount' => 'decimal:2',
+        'invoice_credit_line_nominal_code' => 'integer',
     ];
 
     protected $dates = [
@@ -33,15 +36,15 @@ class AccountsInvoiceCreditLine extends Model
     /**
      * Get the credit note that this line belongs to.
      */
-    public function creditNote(): BelongsTo
+    public function invoiceCredit(): BelongsTo
     {
-        return $this->belongsTo(AccountsInvoiceCredit::class, 'invoice_credit_line_credit', 'invoice_credit_id');
+        return $this->belongsTo(AccountsInvoiceCredit::class, 'invoice_credit_id', 'invoice_credit_id');
     }
 
     /**
      * Get the VAT rate for this line.
      */
-    public function AccountsVatRate(): BelongsTo
+    public function vatRate(): BelongsTo
     {
         return $this->belongsTo(AccountsVatRate::class, 'invoice_credit_line_vat_rate', 'vat_rate_id');
     }
@@ -57,16 +60,10 @@ class AccountsInvoiceCreditLine extends Model
     /**
      * Get the employee who created this line.
      */
-    public function createdBy(): BelongsTo
-    {
-        return $this->belongsTo(Employee::class, 'invoice_credit_line_created_by', 'employee_id');
-    }
+    
 
     /**
      * Get the employee who updated this line.
      */
-    public function updatedBy(): BelongsTo
-    {
-        return $this->belongsTo(Employee::class, 'invoice_credit_line_updated_by', 'employee_id');
-    }
+    
 }

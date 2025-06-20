@@ -6,74 +6,77 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+        /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('guarantor', function (Blueprint $table) {
             $table->integer('guarantor_id')->primary();
             $table->tinyInteger('guarantor_title')->nullable();
             $table->string('guarantor_first_name', 30)
-                  ->charset('latin1')
-                  ->collation('latin1_swedish_ci')
+                  
+                  
                   ->nullable();
             $table->string('guarantor_surname', 30)
-                  ->charset('latin1')
-                  ->collation('latin1_swedish_ci')
+                  
+                  
                   ->nullable();
             $table->string('guarantor_phone_home', 255)->nullable();
             $table->string('guarantor_phone_work', 255)->nullable();
             $table->string('guarantor_phone_mobile', 255)->nullable();
             $table->string('guarantor_fax', 20)
-                  ->charset('latin1')
-                  ->collation('latin1_swedish_ci')
+                  
+                  
                   ->nullable();
             $table->string('guarantor_email', 255)
-                  ->charset('latin1')
-                  ->collation('latin1_swedish_ci')
+                  
+                  
                   ->nullable();
             $table->string('guarantor_property_number_name', 50)
-                  ->charset('latin1')
-                  ->collation('latin1_swedish_ci')
+                  
+                  
                   ->nullable();
             $table->string('guarantor_apartment_number_name', 50)
-                  ->charset('latin1')
-                  ->collation('latin1_swedish_ci')
+                  
+                  
                   ->nullable();
             $table->string('guarantor_address_line_1', 255)
-                  ->charset('latin1')
-                  ->collation('latin1_swedish_ci')
+                  
+                  
                   ->nullable();
             $table->string('guarantor_address_line_2', 255)
-                  ->charset('latin1')
-                  ->collation('latin1_swedish_ci')
+                  
+                  
                   ->nullable();
             $table->string('guarantor_suburb', 255)->nullable();
             $table->string('guarantor_town_city', 255)->nullable();
             $table->string('guarantor_postcode', 8)
-                  ->charset('latin1')
-                  ->collation('latin1_swedish_ci')
+                  
+                  
                   ->nullable();
             $table->integer('guarantor_country')->nullable();
             $table->date('guarantor_dob')->nullable();
             $table->string('guarantor_passport_number', 10)
-                  ->charset('latin1')
-                  ->collation('latin1_swedish_ci')
+                  
+                  
                   ->nullable();
             $table->text('guarantor_notes')
-                  ->charset('latin1')
-                  ->collation('latin1_swedish_ci')
+                  
+                  
                   ->nullable();
             $table->tinyInteger('guarantor_bank_name')->nullable();
             $table->string('guarantor_bank_sort_code', 8)
-                  ->charset('latin1')
-                  ->collation('latin1_swedish_ci')
+                  
+                  
                   ->nullable();
             $table->string('guarantor_bank_account_number', 8)
-                  ->charset('latin1')
-                  ->collation('latin1_swedish_ci')
+                  
+                  
                   ->nullable();
             $table->string('guarantor_bank_account_name', 100)
-                  ->charset('latin1')
-                  ->collation('latin1_swedish_ci')
+                  
+                  
                   ->nullable();
             $table->dateTime('guarantor_date_created')->nullable();
             $table->dateTime('guarantor_date_updated')->nullable();
@@ -120,6 +123,9 @@ return new class extends Migration
         });
     }
 
+        /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
         Schema::dropIfExists('guarantor');

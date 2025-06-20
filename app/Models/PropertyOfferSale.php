@@ -9,21 +9,65 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class PropertyOfferSale extends Model
 {
     protected $table = 'property_offer_sale';
-    protected $primaryKey = 'property_offer_sale_id';
+    protected $primaryKey = 'integer';
     public $timestamps = false;
 
-    protected $fillable = [
+        protected $fillable = [
         'property_offer_sale_property',
-        'property_offer_sale_amount',
-        'property_offer_sale_status',
-        'property_offer_sale_date',
-        'property_offer_sale_type',
+        'property_offer_sale_price',
         'property_offer_sale_finance',
-        // ...other fields...
+        'property_offer_sale_mortgage_deposit',
+        'property_offer_sale_type',
+        'property_offer_sale_survey',
+        'property_offer_sale_htb',
+        'property_offer_sale_htb_approved',
+        'property_offer_sale_chain',
+        'property_offer_sale_status',
+        'property_offer_sale_status_reason',
+        'property_offer_sale_notes',
+        'property_offer_sale_notes_private',
+        'property_offer_sale_employee',
+        'property_offer_sale_referral_solicitor',
+        'property_offer_sale_referral_solicitor_notes',
+        'property_offer_sale_referral_surveyor',
+        'property_offer_sale_referral_surveyor_notes',
+        'property_offer_sale_referral_mortgage',
+        'property_offer_sale_referral_mortgage_notes',
+        'property_offer_sale_referral_valuation',
+        'property_offer_sale_referral_valuation_notes',
+        'property_offer_sale_viewings',
+        'property_offer_sale_revised_offer_id',
+        'property_offer_sale_date_created',
+        'property_offer_sale_date_updated',
+        'property_offer_sale_created_by',
+        'property_offer_sale_updated_by',
     ];
 
-    protected $dates = [
-        'property_offer_sale_date',
+    protected $casts = [
+        'property_offer_sale_property' => 'integer',
+        'property_offer_sale_price' => 'decimal:2',
+        'property_offer_sale_finance' => 'integer',
+        'property_offer_sale_mortgage_deposit' => 'integer',
+        'property_offer_sale_type' => 'integer',
+        'property_offer_sale_survey' => 'integer',
+        'property_offer_sale_htb' => 'integer',
+        'property_offer_sale_htb_approved' => 'integer',
+        'property_offer_sale_chain' => 'integer',
+        'property_offer_sale_status' => 'integer',
+        'property_offer_sale_employee' => 'integer',
+        'property_offer_sale_referral_solicitor' => 'integer',
+        'property_offer_sale_referral_surveyor' => 'integer',
+        'property_offer_sale_referral_mortgage' => 'integer',
+        'property_offer_sale_referral_valuation' => 'integer',
+        'property_offer_sale_viewings' => 'integer',
+        'property_offer_sale_revised_offer_id' => 'integer',
+        'property_offer_sale_date_created' => 'datetime',
+        'property_offer_sale_date_updated' => 'datetime',
+        'property_offer_sale_created_by' => 'integer',
+        'property_offer_sale_updated_by' => 'integer',
+    ];
+
+        protected $dates = [
         'property_offer_sale_date_created',
         'property_offer_sale_date_updated',
     ];
@@ -31,29 +75,92 @@ class PropertyOfferSale extends Model
     /**
      * Get the property that the offer is for.
      */
+    
+
+    /**
+     * Get the status of the offer.
+     */
+    
+
+    /**
+     * Get the type of the offer.
+     */
+    
+
+    /**
+     * Get the finance type for the offer.
+     */
+    
+
+    /**
+     * Get the employee who created the offer.
+     */
+    
+
+    /**
+     * Get the employee who updated the offer.
+     */
+    
+
+    /**
+     * Get the applicants associated with the offer.
+     */
+    
+
+    /**
+     * Get the attachments for the offer.
+     */
+    
+
+    /**
+     * Get the chain information for the offer.
+     */
+    
+
+    /**
+     * Get the status log for the offer.
+     */
+    
+
+    /**
+     * Get the updates for the offer.
+     */
+    
+
+    /**
+     * Get the Employee associated with this record.
+     */
+    public function by(): BelongsTo
+    {
+        return $this->belongsTo(Employee::class, 'property_offer_sale_created_by', 'employee_id');
+    }
+
+    /**
+     * Get the Employee associated with this record.
+     */
+    public function employee(): BelongsTo
+    {
+        return $this->belongsTo(Employee::class, 'property_offer_sale_employee', 'employee_id');
+    }
+
+    /**
+     * Get the Property associated with this record.
+     */
     public function property(): BelongsTo
     {
         return $this->belongsTo(Property::class, 'property_offer_sale_property', 'property_id');
     }
 
     /**
-     * Get the status of the offer.
+     * Get the Employee associated with this record.
      */
-    public function status(): BelongsTo
+    public function by(): BelongsTo
     {
-        return $this->belongsTo(PropertyOfferStatus::class, 'property_offer_sale_status', 'property_offer_status_id');
+        return $this->belongsTo(Employee::class, 'property_offer_sale_updated_by', 'employee_id');
     }
 
     /**
-     * Get the type of the offer.
-     */
-    public function type(): BelongsTo
-    {
-        return $this->belongsTo(PropertyOfferSaleType::class, 'property_offer_sale_type', 'property_offer_sale_type_id');
-    }
-
-    /**
-     * Get the finance type for the offer.
+     * Get the SaleFinance associated with this record.
      */
     public function finance(): BelongsTo
     {
@@ -61,58 +168,34 @@ class PropertyOfferSale extends Model
     }
 
     /**
-     * Get the employee who created the offer.
+     * Get the PropertyOfferSaleType associated with this record.
      */
-    public function createdBy(): BelongsTo
+    public function type(): BelongsTo
     {
-        return $this->belongsTo(Employee::class, 'property_offer_sale_created_by', 'employee_id');
+        return $this->belongsTo(PropertyOfferSaleType::class, 'property_offer_sale_type', 'property_offer_sale_type_id');
     }
 
     /**
-     * Get the employee who updated the offer.
+     * Get the SurveyStatus associated with this record.
      */
-    public function updatedBy(): BelongsTo
+    public function survey(): BelongsTo
     {
-        return $this->belongsTo(Employee::class, 'property_offer_sale_updated_by', 'employee_id');
+        return $this->belongsTo(SurveyStatus::class, 'property_offer_sale_survey', 'survey_status_id');
     }
 
     /**
-     * Get the applicants associated with the offer.
+     * Get the PropertyOfferStatus associated with this record.
      */
-    public function applicants(): HasMany
+    public function status(): BelongsTo
     {
-        return $this->hasMany(PropertyOfferSaleApplicants::class, 'property_offer_sale_applicants_offer', 'property_offer_sale_id');
+        return $this->belongsTo(PropertyOfferStatus::class, 'property_offer_sale_status', 'property_offer_status_id');
     }
 
     /**
-     * Get the attachments for the offer.
+     * Get the PropertyOfferSale associated with this record.
      */
-    public function attachments(): HasMany
+    public function id(): BelongsTo
     {
-        return $this->hasMany(PropertyOfferSaleAttachments::class, 'property_offer_sale_attachments_offer', 'property_offer_sale_id');
-    }
-
-    /**
-     * Get the chain information for the offer.
-     */
-    public function chain(): HasMany
-    {
-        return $this->hasMany(PropertyOfferSaleChain::class, 'property_offer_sale_chain_offer', 'property_offer_sale_id');
-    }
-
-    /**
-     * Get the status log for the offer.
-     */
-    public function statusLog(): HasMany
-    {
-        return $this->hasMany(PropertyOfferSaleLogStatus::class, 'property_offer_sale_log_status_offer', 'property_offer_sale_id');
-    }
-
-    /**
-     * Get the updates for the offer.
-     */
-    public function updates(): HasMany
-    {
-        return $this->hasMany(PropertyOfferSaleUpdates::class, 'property_offer_sale_updates_offer', 'property_offer_sale_id');
+        return $this->belongsTo(PropertyOfferSale::class, 'property_offer_sale_revised_offer_id', 'property_offer_sale_id');
     }
 }

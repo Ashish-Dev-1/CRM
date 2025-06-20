@@ -8,26 +8,41 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class EmployeeToRole extends Model
 {
     protected $table = 'employee_to_role';
-    protected $primaryKey = 'employee_to_role_id';
+    protected $primaryKey = 'integer';
     public $timestamps = false;
 
-    protected $fillable = [
+        protected $fillable = [
         'employee_id',
         'employee_role_id',
+    ];
+
+    protected $casts = [
+        'employee_id' => 'integer',
+        'employee_role_id' => 'integer',
     ];
 
     /**
      * Get the employee for this role assignment.
      */
-    public function employee(): BelongsTo
+    
+
+    /**
+     * Get the role for this assignment.
+     */
+    
+
+    /**
+     * Get the Employee associated with this record.
+     */
+    public function id(): BelongsTo
     {
         return $this->belongsTo(Employee::class, 'employee_id', 'employee_id');
     }
 
     /**
-     * Get the role for this assignment.
+     * Get the EmployeeRole associated with this record.
      */
-    public function role(): BelongsTo
+    public function id(): BelongsTo
     {
         return $this->belongsTo(EmployeeRole::class, 'employee_role_id', 'employee_role_id');
     }

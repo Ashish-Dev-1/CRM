@@ -11,16 +11,18 @@ class WorksRoom extends Model
     protected $primaryKey = 'works_room_id';
     public $timestamps = false;
 
-    protected $fillable = [
+        protected $fillable = [
+        'works_room_id',
         'works_room_name',
-        'works_room_description',
+        'works_room_sort',
+    ];
+
+    protected $casts = [
+        'works_room_sort' => 'integer',
     ];
 
     /**
      * Get the works for this room.
      */
-    public function works(): HasMany
-    {
-        return $this->hasMany(Works::class, 'works_room', 'works_room_id');
-    }
+    
 }

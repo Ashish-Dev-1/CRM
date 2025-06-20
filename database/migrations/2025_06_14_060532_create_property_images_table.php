@@ -5,6 +5,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
+        /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('property_images', function (Blueprint $table) {
@@ -12,7 +15,7 @@ return new class extends Migration {
             $table->integer('property_id');
             $table->string('filename', 100);
             $table->string('caption', 100)->default('');
-            $table->unsignedInteger('filesize')->default(0);
+            $table->integer('filesize')->default(0);
             $table->dateTime('date_added')->nullable();
             $table->mediumInteger('sort')->nullable();
             $table->mediumInteger('sort_highlights')->default(127);
@@ -25,6 +28,9 @@ return new class extends Migration {
         });
     }
 
+        /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
         Schema::dropIfExists('property_images');

@@ -6,7 +6,10 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-     public function up(): void
+         /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
         Schema::create('keys_add', function (Blueprint $table) {
             $table->increments('keys_add_id');
@@ -36,6 +39,9 @@ return new class extends Migration
     }
 
     /**
+     * Reverse the migrations.
+     */
+        /**
      * Reverse the migrations.
      */
     public function down(): void

@@ -6,15 +6,21 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-     public function up(): void
+         /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
         Schema::create('lead_source', function (Blueprint $table) {
             $table->increments('lead_source_id');
-            $table->string('lead_source_name', 40)->nullable()->charset('latin1');
+            $table->string('lead_source_name', 40)->nullable();
         });
     }
 
     /**
+     * Reverse the migrations.
+     */
+        /**
      * Reverse the migrations.
      */
     public function down(): void

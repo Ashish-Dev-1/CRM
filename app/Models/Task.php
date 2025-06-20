@@ -8,65 +8,74 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Task extends Model
 {
     protected $table = 'task';
-    protected $primaryKey = 'task_id';
+    protected $primaryKey = 'integer';
     public $timestamps = false;
 
-    protected $fillable = [
-        'task_title',
+        protected $fillable = [
         'task_description',
-        'task_date',
+        'task_date_tbc',
+        'task_deadline',
+        'task_routine',
         'task_status',
-        'task_employee',
-        'task_employee_assigned_to',
+        'task_sort',
         'task_date_created',
-        'task_date_updated',
         'task_created_by',
-        'task_updated_by',
     ];
 
-    protected $dates = [
-        'task_date',
+    protected $casts = [
+        'task_date_tbc' => 'date',
+        'task_deadline' => 'date',
+        'task_routine' => 'integer',
+        'task_status' => 'integer',
+        'task_sort' => 'integer',
+        'task_date_created' => 'datetime',
+        'task_created_by' => 'integer',
+    ];
+
+        protected $dates = [
+        'task_date_tbc',
+        'task_deadline',
         'task_date_created',
-        'task_date_updated',
     ];
 
     /**
      * Get the status of the task.
      */
-    public function status(): BelongsTo
-    {
-        return $this->belongsTo(TaskStatus::class, 'task_status', 'task_status_id');
-    }
+    
 
     /**
      * Get the employee related to the task.
      */
-    public function employee(): BelongsTo
-    {
-        return $this->belongsTo(Employee::class, 'task_employee', 'employee_id');
-    }
+    
 
     /**
      * Get the employee assigned to the task.
      */
-    public function assignedTo(): BelongsTo
-    {
-        return $this->belongsTo(Employee::class, 'task_employee_assigned_to', 'employee_id');
-    }
+    
 
     /**
      * Get the employee who created the task.
      */
-    public function createdBy(): BelongsTo
+    
+
+    /**
+     * Get the employee who updated the task.
+     */
+    
+
+    /**
+     * Get the Employee associated with this record.
+     */
+    public function by(): BelongsTo
     {
         return $this->belongsTo(Employee::class, 'task_created_by', 'employee_id');
     }
 
     /**
-     * Get the employee who updated the task.
+     * Get the TaskStatus associated with this record.
      */
-    public function updatedBy(): BelongsTo
+    public function status(): BelongsTo
     {
-        return $this->belongsTo(Employee::class, 'task_updated_by', 'employee_id');
+        return $this->belongsTo(TaskStatus::class, 'task_status', 'task_status_id');
     }
 }

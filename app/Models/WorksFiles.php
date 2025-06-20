@@ -11,42 +11,43 @@ class WorksFiles extends Model
     protected $primaryKey = 'works_files_id';
     public $timestamps = false;
 
-    protected $fillable = [
-        'works_files_works',
-        'works_files_name',
+        protected $fillable = [
+        'works_files_id',
+        'works_id',
         'works_files_filename',
-        'works_files_date_created',
-        'works_files_date_updated',
-        'works_files_created_by',
-        'works_files_updated_by',
+        'works_files_caption',
+        'works_files_date_added',
+        'works_files_sort',
     ];
 
-    protected $dates = [
-        'works_files_date_created',
-        'works_files_date_updated',
+    protected $casts = [
+        'works_files_date_added' => 'datetime',
+    ];
+
+        protected $dates = [
+        'works_files_date_added',
     ];
 
     /**
      * Get the works entry that owns the file.
      */
-    public function works(): BelongsTo
-    {
-        return $this->belongsTo(Works::class, 'works_files_works', 'works_id');
-    }
+    
 
     /**
      * Get the employee who created the file.
      */
-    public function createdBy(): BelongsTo
-    {
-        return $this->belongsTo(Employee::class, 'works_files_created_by', 'employee_id');
-    }
+    
 
     /**
      * Get the employee who updated the file.
      */
-    public function updatedBy(): BelongsTo
+    
+
+    /**
+     * Get the Works associated with this record.
+     */
+    public function id(): BelongsTo
     {
-        return $this->belongsTo(Employee::class, 'works_files_updated_by', 'employee_id');
+        return $this->belongsTo(Works::class, 'works_id', 'works_id');
     }
 }

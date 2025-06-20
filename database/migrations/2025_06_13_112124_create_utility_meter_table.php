@@ -5,16 +5,19 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
+        /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('utility_meter', function (Blueprint $table) {
             $table->increments('utility_meter_id');
-            $table->integer('utility_meter_property')->nullable();
-            $table->tinyInteger('utility_meter_utility')->nullable();
-            $table->tinyInteger('utility_meter_type')->nullable();
-            $table->tinyInteger('utility_meter_location')->nullable();
+            $table->unsignedInteger('utility_meter_property')->nullable();
+            $table->unsignedInteger('utility_meter_utility')->nullable();
+            $table->unsignedInteger('utility_meter_type')->nullable();
+            $table->unsignedInteger('utility_meter_location')->nullable();
             $table->string('utility_meter_notes', 255)->nullable();
-            $table->smallInteger('utility_meter_provider')->nullable();
+            $table->unsignedSmallInteger('utility_meter_provider')->nullable();
 
             $table->foreign('utility_meter_property', 'fk_utility_meter_utility_meter_property')
                 ->references('property_id')->on('property')
@@ -34,6 +37,9 @@ return new class extends Migration {
         });
     }
 
+        /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
         Schema::dropIfExists('utility_meter');

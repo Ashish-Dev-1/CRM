@@ -12,17 +12,20 @@ class AccountsTenantChargeLine extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'tenant_charge_line_charge',
+        'tenant_charge_id',
         'tenant_charge_line_type',
         'tenant_charge_line_description',
         'tenant_charge_line_amount',
-        'tenant_charge_line_display_order',
-        'tenant_charge_line_period_from',
-        'tenant_charge_line_period_to',
-        'tenant_charge_line_date_created',
-        'tenant_charge_line_date_updated',
-        'tenant_charge_line_created_by',
-        'tenant_charge_line_updated_by',
+        'tenant_charge_line_vat_rate',
+        'tenant_charge_line_vat_amount',
+    ];
+
+    protected $casts = [
+        'tenant_charge_id' => 'integer',
+        'tenant_charge_line_type' => 'integer',
+        'tenant_charge_line_amount' => 'decimal:2',
+        'tenant_charge_line_vat_rate' => 'integer',
+        'tenant_charge_line_vat_amount' => 'decimal:2',
     ];
 
     protected $dates = [
@@ -35,32 +38,34 @@ class AccountsTenantChargeLine extends Model
     /**
      * Get the charge that this line belongs to.
      */
-    public function charge(): BelongsTo
+    public function tenantCharge(): BelongsTo
     {
-        return $this->belongsTo(AccountsTenantCharge::class, 'tenant_charge_line_charge', 'tenant_charge_id');
+        return $this->belongsTo(AccountsTenantCharge::class, 'tenant_charge_id', 'tenant_charge_id');
     }
 
     /**
      * Get the type of this charge line.
      */
-    public function type(): BelongsTo
+    public function lineType(): BelongsTo
     {
         return $this->belongsTo(AccountsTenantChargeLineType::class, 'tenant_charge_line_type', 'tenant_charge_line_type_id');
     }
 
     /**
+     * Get the VAT rate for this charge line.
+     */
+    public function vatRate(): BelongsTo
+    {
+        return $this->belongsTo(AccountsVatRate::class, 'tenant_charge_line_vat_rate', 'vat_rate_id');
+    }
+
+    /**
      * Get the employee who created this charge line.
      */
-    public function createdBy(): BelongsTo
-    {
-        return $this->belongsTo(Employee::class, 'tenant_charge_line_created_by', 'employee_id');
-    }
+    
 
     /**
      * Get the employee who updated this charge line.
      */
-    public function updatedBy(): BelongsTo
-    {
-        return $this->belongsTo(Employee::class, 'tenant_charge_line_updated_by', 'employee_id');
-    }
+    
 }

@@ -8,19 +8,20 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class TenancyInspectionFrequency extends Model
 {
     protected $table = 'tenancy_inspection_frequency';
-    protected $primaryKey = 'tenancy_inspection_frequency_id';
+    protected $primaryKey = 'tinyInteger';
     public $timestamps = false;
 
-    protected $fillable = [
+        protected $fillable = [
         'tenancy_inspection_frequency_name',
-        'tenancy_inspection_frequency_description',
+        'tenancy_inspection_frequency_sort',
+    ];
+
+    protected $casts = [
+        'tenancy_inspection_frequency_sort' => 'integer',
     ];
 
     /**
      * Get the tenancies with this inspection frequency.
      */
-    public function tenancies(): HasMany
-    {
-        return $this->hasMany(Tenancy::class, 'tenancy_inspection_frequency', 'tenancy_inspection_frequency_id');
-    }
+    
 }

@@ -11,16 +11,13 @@ class UtilityMeterLocation extends Model
     protected $primaryKey = 'utility_meter_location_id';
     public $timestamps = false;
 
-    protected $fillable = [
+        protected $fillable = [
+        'utility_meter_location_id',
         'utility_meter_location_name',
-        'utility_meter_location_description',
     ];
 
     /**
      * Get the meters at this location.
      */
-    public function meters(): HasMany
-    {
-        return $this->hasMany(UtilityMeter::class, 'utility_meter_location', 'utility_meter_location_id');
-    }
+    
 }

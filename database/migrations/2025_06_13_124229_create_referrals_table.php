@@ -5,6 +5,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
+        /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('referral', function (Blueprint $table) {
@@ -12,16 +15,16 @@ return new class extends Migration {
             $table->tinyInteger('referral_type')->nullable();
             $table->tinyInteger('referral_sale_purchase')->nullable();
             $table->tinyInteger('referral_customer_type')->nullable();
-            $table->unsignedInteger('referral_customer')->nullable();
+            $table->integer('referral_customer')->nullable();
             $table->string('referral_customer_email', 255)->nullable();
-            $table->unsignedInteger('referral_directory_company')->nullable();
-            $table->unsignedInteger('referral_property')->nullable();
-            $table->unsignedInteger('referral_valuation')->nullable();
+            $table->integer('referral_directory_company')->nullable();
+            $table->integer('referral_property')->nullable();
+            $table->integer('referral_valuation')->nullable();
             $table->text('referral_notes')->nullable();
             $table->text('referral_notes_private')->nullable();
             $table->text('referral_notes_directory_company')->nullable();
-            $table->unsignedInteger('referral_employee')->nullable();
-            $table->unsignedInteger('referral_status')->nullable();
+            $table->integer('referral_employee')->nullable();
+            $table->integer('referral_status')->nullable();
             $table->string('referral_commission_our_invoice_ref', 50)->nullable();
             $table->decimal('referral_commission_amount', 10, 2)->nullable();
             $table->date('referral_commission_date_paid')->nullable();
@@ -31,8 +34,8 @@ return new class extends Migration {
             $table->tinyInteger('referral_total_number_of_payments_employee')->default(0);
             $table->dateTime('referral_date_created')->nullable();
             $table->dateTime('referral_date_updated')->nullable();
-            $table->unsignedInteger('referral_created_by')->nullable();
-            $table->unsignedInteger('referral_updated_by')->nullable();
+            $table->integer('referral_created_by')->nullable();
+            $table->integer('referral_updated_by')->nullable();
 
             $table->foreign('referral_created_by', 'fk_referral_referral_created_by')
                 ->references('employee_id')->on('employee')
@@ -67,6 +70,9 @@ return new class extends Migration {
         });
     }
 
+        /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
         Schema::dropIfExists('referral');

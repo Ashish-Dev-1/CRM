@@ -8,20 +8,20 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class EmployeePermissionsCategory extends Model
 {
     protected $table = 'employee_permissions_category';
-    protected $primaryKey = 'employee_permissions_category_id';
+    protected $primaryKey = 'tinyInteger';
     public $timestamps = false;
 
-    protected $fillable = [
+        protected $fillable = [
         'employee_permissions_category_name',
-        'employee_permissions_category_description',
         'employee_permissions_category_sort',
+    ];
+
+    protected $casts = [
+        'employee_permissions_category_sort' => 'integer',
     ];
 
     /**
      * Get the permissions in this category.
      */
-    public function permissions(): HasMany
-    {
-        return $this->hasMany(EmployeePermissions::class, 'employee_permissions_category', 'employee_permissions_category_id');
-    }
+    
 }

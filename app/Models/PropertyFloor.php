@@ -8,20 +8,20 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class PropertyFloor extends Model
 {
     protected $table = 'property_floor';
-    protected $primaryKey = 'property_floor_id';
+    protected $primaryKey = 'tinyInteger';
     public $timestamps = false;
 
-    protected $fillable = [
+        protected $fillable = [
         'property_floor_name',
-        'property_floor_description',
         'property_floor_sort',
+    ];
+
+    protected $casts = [
+        'property_floor_sort' => 'integer',
     ];
 
     /**
      * Get the property rooms on this floor.
      */
-    public function propertyRooms(): HasMany
-    {
-        return $this->hasMany(PropertyRoom::class, 'property_room_floor', 'property_floor_id');
-    }
+    
 }

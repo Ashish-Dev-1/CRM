@@ -8,19 +8,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class TenancyFixedTermUnit extends Model
 {
     protected $table = 'tenancy_fixed_term_unit';
-    protected $primaryKey = 'tenancy_fixed_term_unit_id';
+    protected $primaryKey = 'tinyInteger';
     public $timestamps = false;
 
-    protected $fillable = [
+        protected $fillable = [
         'tenancy_fixed_term_unit_name',
-        'tenancy_fixed_term_unit_description',
     ];
 
     /**
      * Get the tenancies that use this fixed term unit.
      */
-    public function tenancies(): HasMany
-    {
-        return $this->hasMany(Tenancy::class, 'tenancy_fixed_term_unit', 'tenancy_fixed_term_unit_id');
-    }
+    
 }

@@ -13,17 +13,26 @@ class ApplicantRequirement extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'ar_applicant',
         'ar_token',
-        'ar_customer_type',
-        'ar_price_min',
-        'ar_price_max',
-        'ar_rent_min',
-        'ar_rent_max',
-        'ar_rent_frequency',
-        'ar_bedrooms_min',
-        'ar_bedrooms_max',
-        // ...other fields...
+        'ar_active',
+        'ar_applicant_id',
+        'ar_property_category',
+        'ar_property_availability',
+        'ar_property_type',
+        'ar_property_min_price',
+        'ar_property_max_price',
+        'ar_property_min_bedrooms',
+        'ar_property_max_bedrooms',
+        'ar_property_furnished',
+        'ar_property_shared',
+        'ar_property_student',
+        'ar_position',
+        'ar_notes',
+        'ar_branch',
+        'ar_date_created',
+        'ar_date_updated',
+        'ar_created_by',
+        'ar_updated_by',
     ];
 
     protected $dates = [
@@ -32,31 +41,55 @@ class ApplicantRequirement extends Model
     ];
 
     /**
-     * Get the applicant that owns the requirement.
+     * Get the applicant associated with this requirement.
      */
     public function applicant(): BelongsTo
     {
-        return $this->belongsTo(Applicant::class, 'ar_applicant', 'applicant_id');
+        return $this->belongsTo(Applicant::class, 'ar_applicant_id', 'applicant_id');
     }
 
     /**
-     * Get the customer type for the requirement.
+     * Get the property category for this requirement.
      */
-    public function customerType(): BelongsTo
+    public function propertyCategory(): BelongsTo
     {
-        return $this->belongsTo(CustomerType::class, 'ar_customer_type', 'customer_type_id');
+        return $this->belongsTo(PropertyCategory::class, 'ar_property_category', 'property_category_id');
     }
 
     /**
-     * Get the rent frequency for the requirement.
+     * Get the property availability for this requirement.
      */
-    public function rentFrequency(): BelongsTo
+    public function propertyAvailability(): BelongsTo
     {
-        return $this->belongsTo(PropertyRentFrequency::class, 'ar_rent_frequency', 'property_rent_frequency_id');
+        return $this->belongsTo(PropertyAvailability::class, 'ar_property_availability', 'property_availability_id');
     }
 
     /**
-     * Get the employee who created the requirement.
+     * Get the property type for this requirement.
+     */
+    public function propertyType(): BelongsTo
+    {
+        return $this->belongsTo(PropertyType::class, 'ar_property_type', 'property_type_id');
+    }
+
+    /**
+     * Get the furnished status for this requirement.
+     */
+    public function furnishedStatus(): BelongsTo
+    {
+        return $this->belongsTo(PropertyFurnishedStatus::class, 'ar_property_furnished', 'property_furnished_status_id');
+    }
+
+    /**
+     * Get the branch associated with this requirement.
+     */
+    public function branch(): BelongsTo
+    {
+        return $this->belongsTo(Branch::class, 'ar_branch', 'branch_id');
+    }
+
+    /**
+     * Get the employee who created this requirement.
      */
     public function createdBy(): BelongsTo
     {
@@ -64,7 +97,7 @@ class ApplicantRequirement extends Model
     }
 
     /**
-     * Get the employee who updated the requirement.
+     * Get the employee who updated this requirement.
      */
     public function updatedBy(): BelongsTo
     {
@@ -72,33 +105,33 @@ class ApplicantRequirement extends Model
     }
 
     /**
-     * Get the property subtypes for the requirement.
+     * Get the properties linked to this requirement.
+     */
+    public function properties(): HasMany
+    {
+        return $this->hasMany(ApplicantRequirementProperties::class, 'arp_requirement', 'ar_id');
+    }
+
+    /**
+     * Get the property subtypes linked to this requirement.
      */
     public function propertySubtypes(): HasMany
     {
-        return $this->hasMany(ApplicantRequirementPropertySubtype::class, 'arps_applicant_requirement', 'ar_id');
+        return $this->hasMany(ApplicantRequirementPropertySubtype::class, 'arps_requirement', 'ar_id');
     }
 
     /**
-     * Get the suburbs for the requirement.
+     * Get the suburbs linked to this requirement.
      */
     public function suburbs(): HasMany
     {
-        return $this->hasMany(ApplicantRequirementSuburb::class, 'ars_applicant_requirement', 'ar_id');
+        return $this->hasMany(ApplicantRequirementSuburb::class, 'ars_requirement', 'ar_id');
     }
 
     /**
-     * Get the properties that match the requirement.
+     * Get the feedback for this requirement.
      */
-    public function matchedProperties(): HasMany
-    {
-        return $this->hasMany(ApplicantRequirementProperties::class, 'arp_applicant_requirement', 'ar_id');
-    }
-
-    /**
-     * Get the feedback on properties that match the requirement.
-     */
-    public function propertyFeedback(): HasMany
+    public function feedback(): HasMany
     {
         return $this->hasMany(ApplicantRequirementFeedback::class, 'applicant_requirement_feedback_requirement', 'ar_id');
     }

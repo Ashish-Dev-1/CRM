@@ -6,11 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-     public function up(): void
+         /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
         Schema::create('programming_task', function (Blueprint $table) {
             $table->increments('programming_task_id');
-            $table->text('programming_task_description')->nullable()->charset('utf8mb3');
+            $table->text('programming_task_description')->nullable();
             $table->tinyInteger('programming_task_severity')->nullable();
             $table->integer('programming_task_sort')->nullable();
             $table->tinyInteger('programming_task_status')->nullable();
@@ -33,6 +36,9 @@ return new class extends Migration
     }
 
     /**
+     * Reverse the migrations.
+     */
+        /**
      * Reverse the migrations.
      */
     public function down(): void

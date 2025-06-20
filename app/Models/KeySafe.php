@@ -11,24 +11,68 @@ class KeySafe extends Model
     protected $primaryKey = 'key_safe_id';
     public $timestamps = false;
 
-    protected $fillable = [
+        protected $fillable = [
+        'key_safe_id',
         'key_safe_property',
+        'key_safe_development',
         'key_safe_code',
         'key_safe_location',
+        'key_safe_contains',
         'key_safe_notes',
-        'key_safe_date_created',
-        'key_safe_date_updated',
+        'key_safe_date_added',
         'key_safe_created_by',
-        'key_safe_updated_by',
     ];
 
-    protected $dates = [
-        'key_safe_date_created',
-        'key_safe_date_updated',
+    protected $casts = [
+        'key_safe_property' => 'integer',
+        'key_safe_development' => 'integer',
+        'key_safe_location' => 'integer',
+        'key_safe_date_added' => 'date',
+        'key_safe_created_by' => 'integer',
+    ];
+
+        protected $dates = [
+        'key_safe_date_added',
     ];
 
     /**
      * Get the property that owns the key safe.
+     */
+    
+
+    /**
+     * Get the location of the key safe.
+     */
+    
+
+    /**
+     * Get the employee who created this key safe record.
+     */
+    
+
+    /**
+     * Get the employee who updated this key safe record.
+     */
+    
+
+    /**
+     * Get the Employee associated with this record.
+     */
+    public function by(): BelongsTo
+    {
+        return $this->belongsTo(Employee::class, 'key_safe_created_by', 'employee_id');
+    }
+
+    /**
+     * Get the Development associated with this record.
+     */
+    public function development(): BelongsTo
+    {
+        return $this->belongsTo(Development::class, 'key_safe_development', 'development_id');
+    }
+
+    /**
+     * Get the Property associated with this record.
      */
     public function property(): BelongsTo
     {
@@ -36,26 +80,10 @@ class KeySafe extends Model
     }
 
     /**
-     * Get the location of the key safe.
+     * Get the KeySafeLocation associated with this record.
      */
     public function location(): BelongsTo
     {
         return $this->belongsTo(KeySafeLocation::class, 'key_safe_location', 'key_safe_location_id');
-    }
-
-    /**
-     * Get the employee who created this key safe record.
-     */
-    public function createdBy(): BelongsTo
-    {
-        return $this->belongsTo(Employee::class, 'key_safe_created_by', 'employee_id');
-    }
-
-    /**
-     * Get the employee who updated this key safe record.
-     */
-    public function updatedBy(): BelongsTo
-    {
-        return $this->belongsTo(Employee::class, 'key_safe_updated_by', 'employee_id');
     }
 }

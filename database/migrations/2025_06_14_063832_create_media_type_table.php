@@ -6,16 +6,22 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-     public function up(): void
+         /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
         Schema::create('media_type', function (Blueprint $table) {
             $table->tinyIncrements('media_type_id');
-            $table->string('media_type_name', 50)->nullable()->charset('utf8mb3');
+            $table->string('media_type_name', 50)->nullable();
             $table->index('media_type_id');
         });
     }
 
     /**
+     * Reverse the migrations.
+     */
+        /**
      * Reverse the migrations.
      */
     public function down(): void

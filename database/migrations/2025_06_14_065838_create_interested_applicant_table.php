@@ -6,7 +6,10 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-     public function up(): void
+         /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
         Schema::create('interested_applicant', function (Blueprint $table) {
             $table->increments('interested_applicant_id');
@@ -36,6 +39,9 @@ return new class extends Migration
         });
     }
 
+        /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
         Schema::dropIfExists('interested_applicant');

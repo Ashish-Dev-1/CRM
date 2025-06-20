@@ -11,16 +11,18 @@ class WorksCategory extends Model
     protected $primaryKey = 'works_category_id';
     public $timestamps = false;
 
-    protected $fillable = [
+        protected $fillable = [
+        'works_category_id',
         'works_category_name',
-        'works_category_description',
+        'works_category_sort',
+    ];
+
+    protected $casts = [
+        'works_category_sort' => 'integer',
     ];
 
     /**
      * Get the works with this category.
      */
-    public function works(): HasMany
-    {
-        return $this->hasMany(Works::class, 'works_category', 'works_category_id');
-    }
+    
 }

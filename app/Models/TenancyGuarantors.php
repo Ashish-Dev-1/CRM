@@ -8,16 +8,17 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class TenancyGuarantors extends Model
 {
     protected $table = 'tenancy_guarantors';
-    protected $primaryKey = 'tenancy_guarantors_id';
+    protected $primaryKey = 'integer';
     public $timestamps = false;
 
-    protected $fillable = [
-        'tenancy_guarantors_tenancy',
-        'tenancy_guarantors_guarantor',
-        'tenancy_guarantors_date_created',
-        'tenancy_guarantors_date_updated',
-        'tenancy_guarantors_created_by',
-        'tenancy_guarantors_updated_by',
+        protected $fillable = [
+        'guarantor_id',
+        'tenancy_id',
+    ];
+
+    protected $casts = [
+        'guarantor_id' => 'integer',
+        'tenancy_id' => 'integer',
     ];
 
     protected $dates = [
@@ -28,32 +29,36 @@ class TenancyGuarantors extends Model
     /**
      * Get the tenancy that the guarantor is associated with.
      */
-    public function tenancy(): BelongsTo
-    {
-        return $this->belongsTo(Tenancy::class, 'tenancy_guarantors_tenancy', 'tenancy_id');
-    }
+    
 
     /**
      * Get the guarantor associated with the tenancy.
      */
-    public function guarantor(): BelongsTo
-    {
-        return $this->belongsTo(Guarantor::class, 'tenancy_guarantors_guarantor', 'guarantor_id');
-    }
+    
 
     /**
      * Get the employee who created the tenancy guarantor record.
      */
-    public function createdBy(): BelongsTo
-    {
-        return $this->belongsTo(Employee::class, 'tenancy_guarantors_created_by', 'employee_id');
-    }
+    
 
     /**
      * Get the employee who updated the tenancy guarantor record.
      */
-    public function updatedBy(): BelongsTo
+    
+
+    /**
+     * Get the Guarantor associated with this record.
+     */
+    public function id(): BelongsTo
     {
-        return $this->belongsTo(Employee::class, 'tenancy_guarantors_updated_by', 'employee_id');
+        return $this->belongsTo(Guarantor::class, 'guarantor_id', 'guarantor_id');
+    }
+
+    /**
+     * Get the Tenancy associated with this record.
+     */
+    public function id(): BelongsTo
+    {
+        return $this->belongsTo(Tenancy::class, 'tenancy_id', 'tenancy_id');
     }
 }

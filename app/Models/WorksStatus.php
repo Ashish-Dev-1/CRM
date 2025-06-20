@@ -11,16 +11,18 @@ class WorksStatus extends Model
     protected $primaryKey = 'works_status_id';
     public $timestamps = false;
 
-    protected $fillable = [
+        protected $fillable = [
+        'works_status_id',
         'works_status_name',
-        'works_status_description',
+        'works_status_sort',
+    ];
+
+    protected $casts = [
+        'works_status_sort' => 'integer',
     ];
 
     /**
      * Get the works with this status.
      */
-    public function works(): HasMany
-    {
-        return $this->hasMany(Works::class, 'works_status', 'works_status_id');
-    }
+    
 }

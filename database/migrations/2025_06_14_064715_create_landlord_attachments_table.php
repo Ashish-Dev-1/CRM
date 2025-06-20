@@ -6,14 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-     public function up(): void
+         /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
         Schema::create('landlord_attachments', function (Blueprint $table) {
             $table->increments('landlord_attachments_id');
             $table->integer('landlord_id')->nullable();
-            $table->string('landlord_attachments_file_name', 255)->nullable()->charset('utf8mb3');
-            $table->unsignedInteger('landlord_attachments_file_size')->nullable();
-            $table->string('landlord_attachments_caption', 100)->nullable()->charset('utf8mb3');
+            $table->string('landlord_attachments_file_name', 255)->nullable();
+            $table->integer('landlord_attachments_file_size')->nullable();
+            $table->string('landlord_attachments_caption', 100)->nullable();
             $table->tinyInteger('landlord_attachments_sort')->nullable();
             $table->dateTime('landlord_attachments_date_created')->nullable();
             $table->integer('landlord_attachments_created_by')->nullable();
@@ -34,6 +37,9 @@ return new class extends Migration
     }
 
     /**
+     * Reverse the migrations.
+     */
+        /**
      * Reverse the migrations.
      */
     public function down(): void

@@ -3,7 +3,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDevelopmentUpdatesTable extends Migration
+return new class extends Migration
 {
     public function up()
     {
@@ -27,4 +27,4 @@ class CreateDevelopmentUpdatesTable extends Migration
     {
         Schema::dropIfExists('development_updates');
     }
-}
+};

@@ -8,43 +8,51 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class AccountsTenantChargeRecurring extends Model
 {
-    protected $table = 'accounts_tenant_charge_recurring';
+    protected $table = 'accounts_tenant_charge_recurrings';
     protected $primaryKey = 'tenant_charge_recurring_id';
     public $timestamps = false;
 
     protected $fillable = [
-        'tenant_charge_recurring_token',
-        'tenant_charge_recurring_title',
-        'tenant_charge_recurring_tenant',
-        'tenant_charge_recurring_tenancy',
-        'tenant_charge_recurring_property',
+        'tenant_charge_recurring_tenant_charge_id',
+        'tenant_charge_recurring_tenancy_id',
         'tenant_charge_recurring_frequency',
         'tenant_charge_recurring_frequency_unit',
-        'tenant_charge_recurring_next_date',
         'tenant_charge_recurring_start_date',
         'tenant_charge_recurring_end_date',
-        'tenant_charge_recurring_status',
-        'tenant_charge_recurring_branch',
+        'tenant_charge_recurring_next_processing_date',
+        'tenant_charge_recurring_suspended',
         'tenant_charge_recurring_date_created',
         'tenant_charge_recurring_date_updated',
         'tenant_charge_recurring_created_by',
         'tenant_charge_recurring_updated_by',
     ];
 
+    protected $casts = [
+        'tenant_charge_recurring_tenant_charge_id' => 'integer',
+        'tenant_charge_recurring_tenancy_id' => 'integer',
+        'tenant_charge_recurring_frequency' => 'integer',
+        'tenant_charge_recurring_frequency_unit' => 'integer',
+        'tenant_charge_recurring_suspended' => 'integer',
+        'tenant_charge_recurring_date_created' => 'datetime',
+        'tenant_charge_recurring_date_updated' => 'datetime',
+        'tenant_charge_recurring_created_by' => 'integer',
+        'tenant_charge_recurring_updated_by' => 'integer',
+    ];
+
     protected $dates = [
-        'tenant_charge_recurring_next_date',
         'tenant_charge_recurring_start_date',
         'tenant_charge_recurring_end_date',
+        'tenant_charge_recurring_next_processing_date',
         'tenant_charge_recurring_date_created',
         'tenant_charge_recurring_date_updated',
     ];
 
     /**
-     * Get the tenant associated with this recurring charge.
+     * Get the tenant charge associated with this recurring charge.
      */
-    public function tenant(): BelongsTo
+    public function tenantCharge(): BelongsTo
     {
-        return $this->belongsTo(Tenant::class, 'tenant_charge_recurring_tenant', 'tenant_id');
+        return $this->belongsTo(AccountsTenantCharge::class, 'tenant_charge_recurring_tenant_charge_id', 'tenant_charge_id');
     }
 
     /**
@@ -52,15 +60,7 @@ class AccountsTenantChargeRecurring extends Model
      */
     public function tenancy(): BelongsTo
     {
-        return $this->belongsTo(Tenancy::class, 'tenant_charge_recurring_tenancy', 'tenancy_id');
-    }
-
-    /**
-     * Get the property associated with this recurring charge.
-     */
-    public function property(): BelongsTo
-    {
-        return $this->belongsTo(Property::class, 'tenant_charge_recurring_property', 'property_id');
+        return $this->belongsTo(Tenancy::class, 'tenant_charge_recurring_tenancy_id', 'tenancy_id');
     }
 
     /**
@@ -69,14 +69,6 @@ class AccountsTenantChargeRecurring extends Model
     public function frequencyUnit(): BelongsTo
     {
         return $this->belongsTo(AccountsRecurringFrequencyUnit::class, 'tenant_charge_recurring_frequency_unit', 'recurring_frequency_unit_id');
-    }
-
-    /**
-     * Get the branch associated with this recurring charge.
-     */
-    public function branch(): BelongsTo
-    {
-        return $this->belongsTo(Branch::class, 'tenant_charge_recurring_branch', 'branch_id');
     }
 
     /**

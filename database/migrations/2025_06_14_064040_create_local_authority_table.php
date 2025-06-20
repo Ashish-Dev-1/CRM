@@ -6,11 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+        /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('local_authority', function (Blueprint $table) {
             $table->increments('local_authority_id');
-            $table->string('local_authority_name', 255)->nullable()->charset('utf8mb3');
+            $table->string('local_authority_name', 255)->nullable();
             $table->string('local_authority_housing_department_name', 100)->nullable();
             $table->string('local_authority_property_number_name', 50)->nullable();
             $table->string('local_authority_address_line_1', 255)->nullable();
@@ -22,7 +25,7 @@ return new class extends Migration
             $table->tinyInteger('local_authority_selective_licencing')->nullable();
             $table->date('local_authority_selective_licencing_start_date')->nullable();
             $table->date('local_authority_selective_licencing_end_date')->nullable();
-            $table->string('local_authority_selective_licencing_email_address', 255)->nullable()->charset('utf8mb3');
+            $table->string('local_authority_selective_licencing_email_address', 255)->nullable();
 
             // Foreign key
             $table->foreign('local_authority_country', 'fk_local_authority_local_authority_country')
@@ -32,6 +35,9 @@ return new class extends Migration
     }
 
     /**
+     * Reverse the migrations.
+     */
+        /**
      * Reverse the migrations.
      */
     public function down(): void

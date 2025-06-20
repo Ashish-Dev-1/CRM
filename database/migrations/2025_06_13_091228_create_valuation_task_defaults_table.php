@@ -5,13 +5,16 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
+        /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('valuation_task_defaults', function (Blueprint $table) {
             $table->smallIncrements('valuation_task_defaults_id');
             $table->tinyInteger('valuation_task_defaults_type')->nullable();
             $table->string('valuation_task_defaults_name', 100)->nullable();
-            $table->tinyInteger('valuation_task_defaults_status')->nullable();
+            $table->unsignedTinyInteger('valuation_task_defaults_status')->nullable();
             $table->text('valuation_task_defaults_notes')->nullable();
             $table->text('valuation_task_defaults_description')->nullable();
             $table->tinyInteger('valuation_task_defaults_sort')->nullable();
@@ -22,6 +25,9 @@ return new class extends Migration {
         });
     }
 
+        /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
         Schema::dropIfExists('valuation_task_defaults');

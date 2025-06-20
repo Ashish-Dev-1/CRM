@@ -12,29 +12,59 @@ class AccountsBacsFile extends Model
     protected $primaryKey = 'bacs_file_id';
     public $timestamps = false;
 
-    protected $fillable = [
-        'bacs_file_branch',
-        'bacs_file_date',
+        protected $fillable = [
+        'bacs_file_destination_sort_code',
+        'bacs_file_destination_account_number',
+        'bacs_file_destination_account_type',
+        'bacs_file_bacs_code',
+        'bacs_file_debit_sort_code',
+        'bacs_file_debit_account_number',
+        'bacs_file_free_format_text',
+        'bacs_file_amount_pence',
+        'bacs_file_amount',
+        'bacs_file_originator_name',
         'bacs_file_reference',
-        'bacs_file_filename',
+        'bacs_file_invoice_payment_reference',
+        'bacs_file_landlord_payment_reference',
+        'bacs_file_destination_account_name',
+        'bacs_file_processing_date',
+        'bacs_file_directory_id',
+        'bacs_file_payment_date',
+        'bacs_file_disbursement_DEL',
+        'bacs_file_nominal_code',
+        'bacs_file_vat_rate',
+        'bacs_file_vat_amount',
+        'bacs_file_exported',
         'bacs_file_date_created',
-        'bacs_file_date_updated',
         'bacs_file_created_by',
-        'bacs_file_updated_by',
     ];
 
-    protected $dates = [
-        'bacs_file_date',
+        protected $dates = [
+        'bacs_file_payment_date',
         'bacs_file_date_created',
-        'bacs_file_date_updated',
+    ];
+
+        protected $casts = [
+        'bacs_file_amount' => 'decimal:2',
+        'bacs_file_invoice_payment_reference' => 'integer',
+        'bacs_file_landlord_payment_reference' => 'integer',
+        'bacs_file_directory_id' => 'integer',
+        'bacs_file_payment_date' => 'date',
+        'bacs_file_disbursement_DEL' => 'integer',
+        'bacs_file_nominal_code' => 'integer',
+        'bacs_file_vat_rate' => 'integer',
+        'bacs_file_vat_amount' => 'decimal:2',
+        'bacs_file_exported' => 'boolean',
+        'bacs_file_date_created' => 'datetime',
+        'bacs_file_created_by' => 'integer',
     ];
 
     /**
-     * Get the branch associated with this BACS file.
+     * Get the directory associated with this BACS file.
      */
-    public function branch(): BelongsTo
+    public function directory(): BelongsTo
     {
-        return $this->belongsTo(Branch::class, 'bacs_file_branch', 'branch_id');
+        return $this->belongsTo(Directory::class, 'bacs_file_directory_id', 'directory_id');
     }
 
     /**
@@ -46,18 +76,34 @@ class AccountsBacsFile extends Model
     }
 
     /**
-     * Get the employee who updated this BACS file.
+     * Get the invoice payment reference associated with this BACS file.
      */
-    public function updatedBy(): BelongsTo
+    public function invoicePayment(): BelongsTo
     {
-        return $this->belongsTo(Employee::class, 'bacs_file_updated_by', 'employee_id');
+        return $this->belongsTo(AccountsInvoice::class, 'bacs_file_invoice_payment_reference', 'invoice_id');
     }
 
     /**
-     * Get the landlord payments included in this BACS file.
+     * Get the landlord payment reference associated with this BACS file.
      */
-    public function landlordPayments(): HasMany
+    public function landlordPayment(): BelongsTo
     {
-        return $this->hasMany(AccountsLandlordPayment::class, 'landlord_payment_bacs_file', 'bacs_file_id');
+        return $this->belongsTo(AccountsLandlordPayment::class, 'bacs_file_landlord_payment_reference', 'landlord_payment_id');
+    }
+
+    /**
+     * Get the nominal code associated with this BACS file.
+     */
+    public function nominalCode(): BelongsTo
+    {
+        return $this->belongsTo(AccountsNominalCode::class, 'bacs_file_nominal_code', 'nominal_code_id');
+    }
+
+    /**
+     * Get the VAT rate associated with this BACS file.
+     */
+    public function vatRate(): BelongsTo
+    {
+        return $this->belongsTo(AccountsVatRate::class, 'bacs_file_vat_rate', 'vat_rate_id');
     }
 }

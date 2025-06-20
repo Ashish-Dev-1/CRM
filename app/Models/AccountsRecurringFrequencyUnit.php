@@ -13,7 +13,11 @@ class AccountsRecurringFrequencyUnit extends Model
 
     protected $fillable = [
         'recurring_frequency_unit_name',
-        'recurring_frequency_unit_description',
+        'recurring_frequency_unit_sort',
+    ];
+
+    protected $casts = [
+        'recurring_frequency_unit_sort' => 'integer',
     ];
 
     /**

@@ -8,19 +8,20 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class ApplicantChainStatus extends Model
 {
     protected $table = 'applicant_chain_status';
-    protected $primaryKey = 'applicant_chain_status_id';
+    protected $primaryKey = 'tinyInteger';
     public $timestamps = false;
 
-    protected $fillable = [
+        protected $fillable = [
         'applicant_chain_status_name',
-        'applicant_chain_status_description',
+        'applicant_chain_status_sort',
+    ];
+
+    protected $casts = [
+        'applicant_chain_status_sort' => 'integer',
     ];
 
     /**
      * Get the applicants with this chain status.
      */
-    public function applicants(): HasMany
-    {
-        return $this->hasMany(Applicant::class, 'applicant_chain_status', 'applicant_chain_status_id');
-    }
+    
 }

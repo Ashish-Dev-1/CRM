@@ -13,7 +13,6 @@ class AccountsInvoicePaymentType extends Model
 
     protected $fillable = [
         'accounts_invoice_payment_type_name',
-        'accounts_invoice_payment_type_description',
     ];
 
     /**

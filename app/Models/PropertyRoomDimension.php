@@ -8,19 +8,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class PropertyRoomDimension extends Model
 {
     protected $table = 'property_room_dimension';
-    protected $primaryKey = 'property_room_dimension_id';
+    protected $primaryKey = 'integer';
     public $timestamps = false;
 
-    protected $fillable = [
+        protected $fillable = [
         'property_room_dimension_name',
-        'property_room_dimension_description',
     ];
 
     /**
      * Get the property rooms that use this dimension unit.
      */
-    public function propertyRooms(): HasMany
-    {
-        return $this->hasMany(PropertyRoom::class, 'property_room_dimension_unit', 'property_room_dimension_id');
-    }
+    
 }

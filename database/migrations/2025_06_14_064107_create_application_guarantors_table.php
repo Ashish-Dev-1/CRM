@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('application_guarantor_address_line_2', 255)->nullable();
             $table->string('application_guarantor_town_city', 255)->nullable();
             $table->string('application_guarantor_post_code', 8)->nullable();
-            $table->tinyInteger('application_guarantor_homeowner', 1)->nullable();
+            $table->tinyInteger('application_guarantor_homeowner')->nullable();
             $table->date('application_guarantor_dob')->nullable();
             $table->string('application_guarantor_nino', 13)->nullable();
             $table->tinyInteger('application_guarantor_employment_status')->nullable();

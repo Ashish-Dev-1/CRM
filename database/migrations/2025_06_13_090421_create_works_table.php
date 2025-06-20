@@ -5,14 +5,17 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
+        /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('works', function (Blueprint $table) {
             $table->id('works_id');
             $table->unsignedInteger('works_property')->nullable();
-            $table->unsignedInteger('works_development')->nullable();
-            $table->tinyInteger('works_category')->nullable();
-            $table->unsignedInteger('works_contractor')->nullable();
+            $table->integer('works_development')->nullable();
+            $table->unsignedBigInteger('works_category')->nullable();
+            $table->integer('works_contractor')->nullable();
             $table->text('works_description')->nullable();
             $table->text('works_outcome')->nullable();
             $table->text('works_notes')->nullable();
@@ -21,8 +24,8 @@ return new class extends Migration {
             $table->text('works_contractor_quote')->nullable();
             $table->decimal('works_contractor_cost', 10, 2)->nullable();
             $table->string('works_agency_invoice_id', 50)->nullable();
-            $table->tinyInteger('works_status')->nullable();
-            $table->tinyInteger('works_room')->nullable();
+            $table->unsignedBigInteger('works_status')->nullable();
+            $table->unsignedTinyInteger('works_room')->nullable();
             $table->tinyInteger('works_reminders')->default(1);
             $table->dateTime('works_date_created')->nullable();
             $table->dateTime('works_date_updated')->nullable();
@@ -30,8 +33,8 @@ return new class extends Migration {
             $table->dateTime('works_date_last_awaiting_landlord_approval')->nullable();
             $table->dateTime('works_date_last_awaiting_landlord_payment')->nullable();
             $table->dateTime('works_date_last_pending')->nullable();
-            $table->unsignedInteger('works_created_by')->nullable();
-            $table->unsignedInteger('works_updated_by')->nullable();
+            $table->integer('works_created_by')->nullable();
+            $table->integer('works_updated_by')->nullable();
 
             $table->foreign('works_created_by', 'fk_works_works_created_by')
                 ->references('employee_id')->on('employee')
@@ -60,6 +63,9 @@ return new class extends Migration {
         });
     }
 
+        /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
         Schema::dropIfExists('works');

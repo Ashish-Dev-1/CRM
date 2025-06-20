@@ -9,47 +9,38 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class EmployeePermissions extends Model
 {
     protected $table = 'employee_permissions';
-    protected $primaryKey = 'employee_permissions_id';
+    protected $primaryKey = 'tinyInteger';
     public $timestamps = false;
 
-    protected $fillable = [
+        protected $fillable = [
         'employee_permissions_name',
-        'employee_permissions_description',
         'employee_permissions_category',
-        'employee_permissions_sort',
+    ];
+
+    protected $casts = [
+        'employee_permissions_category' => 'integer',
     ];
 
     /**
      * Get the category for this permission.
      */
-    public function category(): BelongsTo
-    {
-        return $this->belongsTo(EmployeePermissionsCategory::class, 'employee_permissions_category', 'employee_permissions_category_id');
-    }
+    
 
     /**
      * Get the employees that have this permission directly assigned.
      */
-    public function employees(): BelongsToMany
-    {
-        return $this->belongsToMany(
-            Employee::class,
-            'employee_to_permissions',
-            'employee_permissions_id',
-            'employee_id'
-        );
-    }
+    
 
     /**
      * Get the roles that have this permission.
      */
-    public function roles(): BelongsToMany
+    
+
+    /**
+     * Get the EmployeePermissionsCategory associated with this record.
+     */
+    public function category(): BelongsTo
     {
-        return $this->belongsToMany(
-            EmployeeRole::class,
-            'role_to_permissions',
-            'employee_permissions_id',
-            'employee_role_id'
-        );
+        return $this->belongsTo(EmployeePermissionsCategory::class, 'employee_permissions_category', 'employee_permissions_category_id');
     }
 }

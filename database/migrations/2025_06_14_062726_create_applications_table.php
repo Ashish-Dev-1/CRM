@@ -82,7 +82,7 @@ return new class extends Migration
             $table->dateTime('application_date_created')->timestamp();
             $table->tinyInteger('application_applicant_email_reminders')->default(1);
             $table->tinyInteger('application_holding_deposit_paid')->default(2);
-            $table->tinyInteger('application_proceed', 1)->default(3)->nullable();
+            $table->tinyInteger('application_proceed')->default(3)->nullable();
             $table->tinyInteger('application_can_physically_view')->default(1);
              // Foreign keys
             $table->foreign('application_accountant_title', 'fk_application_application_accountant_title')
