@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class PropertyLogPrice extends Model
 {
     protected $table = 'property_log_price';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -36,17 +36,14 @@ class PropertyLogPrice extends Model
     /**
      * Get the property that this price log belongs to.
      */
-    
 
     /**
      * Get the employee who created this price log record.
      */
-    
 
     /**
      * Get the employee who updated this price log record.
      */
-    
 
     /**
      * Get the Employee associated with this record.

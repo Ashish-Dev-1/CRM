@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Sale extends Model
 {
     protected $table = 'sale';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -106,77 +106,62 @@ class Sale extends Model
     /**
      * Get the property being sold.
      */
-    
 
     /**
      * Get the status of the sale.
      */
-    
 
     /**
      * Get the finance type for the sale.
      */
-    
 
     /**
      * Get the employee responsible for the sale.
      */
-    
 
     /**
      * Get the vendor solicitor company.
      */
-    
 
     /**
      * Get the vendor mortgage advisor.
      */
-    
 
     /**
      * Get the buyer solicitor company.
      */
-    
 
     /**
      * Get the buyer mortgage advisor.
      */
-    
 
     /**
      * Get the collapsed reason for the sale.
      */
-    
 
     /**
      * Get the employee who created the sale.
      */
-    
 
     /**
      * Get the employee who updated the sale.
      */
-    
 
     /**
      * Get the buyers for the sale.
      */
-    
 
     /**
      * Get the status log for the sale.
      */
-    
 
     /**
      * Get the tasks for the sale.
      */
-    
 
     /**
      * Get the updates for the sale.
      */
-    
 
     /**
      * Get the Employee associated with this record.

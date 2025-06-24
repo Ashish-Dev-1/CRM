@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class TenancyAdditionalClauses extends Model
 {
     protected $table = 'tenancy_additional_clauses';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -28,17 +28,14 @@ class TenancyAdditionalClauses extends Model
     /**
      * Get the tenancy that this clause belongs to.
      */
-    
 
     /**
      * Get the employee who created this clause.
      */
-    
 
     /**
      * Get the employee who updated this clause.
      */
-    
 
     /**
      * Get the Tenancy associated with this record.

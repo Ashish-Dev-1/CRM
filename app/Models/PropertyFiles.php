@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class PropertyFiles extends Model
 {
     protected $table = 'property_files';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -31,17 +31,14 @@ class PropertyFiles extends Model
     /**
      * Get the property that owns the file.
      */
-    
 
     /**
      * Get the employee who created this file record.
      */
-    
 
     /**
      * Get the employee who updated this file record.
      */
-    
 
     /**
      * Get the Property associated with this record.

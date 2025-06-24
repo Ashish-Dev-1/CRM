@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class AccountsInvoiceStatus extends Model
 {
-    protected $table = 'accounts_invoice_status';
-    protected $primaryKey = 'tinyInteger';
+    protected $table = 'accounts_invoice_statuses';
     public $timestamps = false;
 
         protected $fillable = [

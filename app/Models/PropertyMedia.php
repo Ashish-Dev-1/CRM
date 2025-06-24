@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class PropertyMedia extends Model
 {
     protected $table = 'property_media';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -30,22 +30,18 @@ class PropertyMedia extends Model
     /**
      * Get the property that owns this media.
      */
-    
 
     /**
      * Get the type of media.
      */
-    
 
     /**
      * Get the employee who created this media record.
      */
-    
 
     /**
      * Get the employee who updated this media record.
      */
-    
 
     /**
      * Get the Property associated with this record.

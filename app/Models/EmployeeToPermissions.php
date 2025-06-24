@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class EmployeeToPermissions extends Model
 {
     protected $table = 'employee_to_permissions';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -24,12 +24,10 @@ class EmployeeToPermissions extends Model
     /**
      * Get the employee for this permission assignment.
      */
-    
 
     /**
      * Get the permission for this assignment.
      */
-    
 
     /**
      * Get the Employee associated with this record.

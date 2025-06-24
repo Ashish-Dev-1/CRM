@@ -93,7 +93,7 @@ class BulkEmail extends Model
     /**
      * Get the ApplicantRequirement associated with this record.
      */
-    public function id(): BelongsTo
+    public function applicantRequirement(): BelongsTo
     {
         return $this->belongsTo(ApplicantRequirement::class, 'bulk_email_app_req_id', 'ar_id');
     }

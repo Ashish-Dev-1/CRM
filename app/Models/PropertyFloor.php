@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class PropertyFloor extends Model
 {
     protected $table = 'property_floor';
-    protected $primaryKey = 'tinyInteger';
+    
     public $timestamps = false;
 
         protected $fillable = [

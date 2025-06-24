@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class PropertyOfferSaleApplicants extends Model
 {
     protected $table = 'property_offer_sale_applicants';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -29,22 +29,18 @@ class PropertyOfferSaleApplicants extends Model
     /**
      * Get the property offer that this applicant record belongs to.
      */
-    
 
     /**
      * Get the applicant who made the offer.
      */
-    
 
     /**
      * Get the employee who created this record.
      */
-    
 
     /**
      * Get the employee who updated this record.
      */
-    
 
     /**
      * Get the PropertyOfferSale associated with this record.

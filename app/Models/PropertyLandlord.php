@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class PropertyLandlord extends Model
 {
     protected $table = 'property_landlord';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -35,22 +35,18 @@ class PropertyLandlord extends Model
     /**
      * Get the property associated with this record.
      */
-    
 
     /**
      * Get the landlord associated with this record.
      */
-    
 
     /**
      * Get the employee who created this record.
      */
-    
 
     /**
      * Get the employee who updated this record.
      */
-    
 
     /**
      * Get the Landlord associated with this record.

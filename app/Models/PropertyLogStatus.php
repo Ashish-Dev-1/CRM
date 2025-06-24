@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class PropertyLogStatus extends Model
 {
     protected $table = 'property_log_status';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -37,27 +37,22 @@ class PropertyLogStatus extends Model
     /**
      * Get the property that this status log belongs to.
      */
-    
 
     /**
      * Get the old status of the property.
      */
-    
 
     /**
      * Get the new status of the property.
      */
-    
 
     /**
      * Get the employee who created this status log record.
      */
-    
 
     /**
      * Get the employee who updated this status log record.
      */
-    
 
     /**
      * Get the Employee associated with this record.

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class PropertyRoom extends Model
 {
     protected $table = 'property_room';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -34,17 +34,14 @@ class PropertyRoom extends Model
     /**
      * Get the property that owns the room.
      */
-    
 
     /**
      * Get the dimension unit of the room.
      */
-    
 
     /**
      * Get the floor of the room.
      */
-    
 
     /**
      * Get the Property associated with this record.

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class AccountsInvoiceLineDescriptionCategory extends Model
 {
     protected $table = 'accounts_invoice_line_description_category';
-    protected $primaryKey = 'tinyInteger';
+    
     public $timestamps = false;
 
         protected $fillable = [

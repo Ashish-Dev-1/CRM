@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class TenancyLogRent extends Model
 {
     protected $table = 'tenancy_log_rent';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -35,17 +35,14 @@ class TenancyLogRent extends Model
     /**
      * Get the tenancy that this rent log belongs to.
      */
-    
 
     /**
      * Get the employee who created this rent log record.
      */
-    
 
     /**
      * Get the employee who updated this rent log record.
      */
-    
 
     /**
      * Get the Tenancy associated with this record.

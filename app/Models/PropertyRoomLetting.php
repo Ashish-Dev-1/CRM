@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class PropertyRoomLetting extends Model
 {
     protected $table = 'property_room_letting';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -52,32 +52,26 @@ class PropertyRoomLetting extends Model
     /**
      * Get the property room that this letting belongs to.
      */
-    
 
     /**
      * Get the rent frequency for this letting.
      */
-    
 
     /**
      * Get the size type for this letting.
      */
-    
 
     /**
      * Get the preferred gender for this letting.
      */
-    
 
     /**
      * Get the employee who created this letting.
      */
-    
 
     /**
      * Get the employee who updated this letting.
      */
-    
 
     /**
      * Get the Property associated with this record.

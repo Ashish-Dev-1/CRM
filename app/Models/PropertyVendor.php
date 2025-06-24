@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class PropertyVendor extends Model
 {
     protected $table = 'property_vendor';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -33,22 +33,18 @@ class PropertyVendor extends Model
     /**
      * Get the property associated with this record.
      */
-    
 
     /**
      * Get the vendor associated with this record.
      */
-    
 
     /**
      * Get the employee who created this record.
      */
-    
 
     /**
      * Get the employee who updated this record.
      */
-    
 
     /**
      * Get the Vendor associated with this record.

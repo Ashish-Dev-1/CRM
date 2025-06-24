@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class TenancyDepositContributor extends Model
 {
     protected $table = 'tenancy_deposit_contributor';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -33,17 +33,14 @@ class TenancyDepositContributor extends Model
     /**
      * Get the tenancy that this deposit contributor belongs to.
      */
-    
 
     /**
      * Get the employee who created this deposit contributor.
      */
-    
 
     /**
      * Get the employee who updated this deposit contributor.
      */
-    
 
     /**
      * Get the Title associated with this record.

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class EmployeeLoginLog extends Model
 {
     protected $table = 'employee_login_log';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -42,7 +42,6 @@ class EmployeeLoginLog extends Model
     /**
      * Get the employee associated with this login log.
      */
-    
 
     /**
      * Get the Employee associated with this record.

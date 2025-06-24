@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class PropertyImages extends Model
 {
     protected $table = 'property_images';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -35,22 +35,18 @@ class PropertyImages extends Model
     /**
      * Get the property that owns the image.
      */
-    
 
     /**
      * Get the room associated with this image, if any.
      */
-    
 
     /**
      * Get the employee who created this image record.
      */
-    
 
     /**
      * Get the employee who updated this image record.
      */
-    
 
     /**
      * Get the Property associated with this record.

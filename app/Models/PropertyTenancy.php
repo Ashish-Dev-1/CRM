@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class PropertyTenancy extends Model
 {
     protected $table = 'property_tenancy';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -52,22 +52,18 @@ class PropertyTenancy extends Model
     /**
      * Get the property that this tenancy details belong to.
      */
-    
 
     /**
      * Get the ERV (Estimated Rental Value) frequency for this tenancy.
      */
-    
 
     /**
      * Get the employee who created this tenancy details.
      */
-    
 
     /**
      * Get the employee who updated this tenancy details.
      */
-    
 
     /**
      * Get the Property associated with this record.

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class AccountsNominalCodeType extends Model
 {
     protected $table = 'accounts_nominal_code_type';
-    protected $primaryKey = 'tinyInteger';
+    
     public $timestamps = false;
 
         protected $fillable = [

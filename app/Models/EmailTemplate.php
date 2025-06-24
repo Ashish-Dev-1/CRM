@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class EmailTemplate extends Model
 {
     protected $table = 'email_template';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -41,17 +41,14 @@ class EmailTemplate extends Model
     /**
      * Get the category of this email template.
      */
-    
 
     /**
      * Get the employee who created this email template.
      */
-    
 
     /**
      * Get the employee who updated this email template.
      */
-    
 
     /**
      * Get the Employee associated with this record.

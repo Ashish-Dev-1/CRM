@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class PropertyOfferSale extends Model
 {
     protected $table = 'property_offer_sale';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -75,57 +75,46 @@ class PropertyOfferSale extends Model
     /**
      * Get the property that the offer is for.
      */
-    
 
     /**
      * Get the status of the offer.
      */
-    
 
     /**
      * Get the type of the offer.
      */
-    
 
     /**
      * Get the finance type for the offer.
      */
-    
 
     /**
      * Get the employee who created the offer.
      */
-    
 
     /**
      * Get the employee who updated the offer.
      */
-    
 
     /**
      * Get the applicants associated with the offer.
      */
-    
 
     /**
      * Get the attachments for the offer.
      */
-    
 
     /**
      * Get the chain information for the offer.
      */
-    
 
     /**
      * Get the status log for the offer.
      */
-    
 
     /**
      * Get the updates for the offer.
      */
-    
 
     /**
      * Get the Employee associated with this record.

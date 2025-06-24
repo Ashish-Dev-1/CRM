@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class TenancyInspectionFrequency extends Model
 {
     protected $table = 'tenancy_inspection_frequency';
-    protected $primaryKey = 'tinyInteger';
+    
     public $timestamps = false;
 
         protected $fillable = [

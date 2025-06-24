@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class TenancyPropertyPart extends Model
 {
     protected $table = 'tenancy_property_part';
-    protected $primaryKey = 'tinyInteger';
+    
     public $timestamps = false;
 
         protected $fillable = [

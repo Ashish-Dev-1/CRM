@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Task extends Model
 {
     protected $table = 'task';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -41,27 +41,22 @@ class Task extends Model
     /**
      * Get the status of the task.
      */
-    
 
     /**
      * Get the employee related to the task.
      */
-    
 
     /**
      * Get the employee assigned to the task.
      */
-    
 
     /**
      * Get the employee who created the task.
      */
-    
 
     /**
      * Get the employee who updated the task.
      */
-    
 
     /**
      * Get the Employee associated with this record.

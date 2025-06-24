@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class AccountsDepositAction extends Model
 {
     protected $table = 'accounts_deposit_action';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [

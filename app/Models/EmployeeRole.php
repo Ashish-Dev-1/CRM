@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class EmployeeRole extends Model
 {
     protected $table = 'employee_role';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -18,7 +18,6 @@ class EmployeeRole extends Model
     /**
      * Get the employees that have this role.
      */
-    
 
     /**
      * Get the permissions associated with this role.

@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class AccountsInvoiceRecurring extends Model
 {
     protected $table = 'accounts_invoice_recurring';
-    protected $primaryKey = 'integer';
     public $timestamps = false;
 
         protected $fillable = [

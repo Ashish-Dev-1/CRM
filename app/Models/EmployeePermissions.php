@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class EmployeePermissions extends Model
 {
     protected $table = 'employee_permissions';
-    protected $primaryKey = 'tinyInteger';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -24,17 +24,14 @@ class EmployeePermissions extends Model
     /**
      * Get the category for this permission.
      */
-    
 
     /**
      * Get the employees that have this permission directly assigned.
      */
-    
 
     /**
      * Get the roles that have this permission.
      */
-    
 
     /**
      * Get the EmployeePermissionsCategory associated with this record.

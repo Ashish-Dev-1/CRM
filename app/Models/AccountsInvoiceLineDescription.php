@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class AccountsInvoiceLineDescription extends Model
 {
     protected $table = 'accounts_invoice_line_description';
-    protected $primaryKey = 'tinyInteger';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -30,27 +30,22 @@ class AccountsInvoiceLineDescription extends Model
     /**
      * Get the category for this description.
      */
-    
 
     /**
      * Get the default VAT rate for this description.
      */
-    
 
     /**
      * Get the default nominal code for this description.
      */
-    
 
     /**
      * Get the branch associated with this description.
      */
-    
 
     /**
      * Get the invoice lines that use this description.
      */
-    
 
     /**
      * Get the AccountsInvoiceLineDescriptionCategory associated with this record.

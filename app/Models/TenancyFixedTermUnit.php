@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class TenancyFixedTermUnit extends Model
 {
     protected $table = 'tenancy_fixed_term_unit';
-    protected $primaryKey = 'tinyInteger';
+    
     public $timestamps = false;
 
         protected $fillable = [

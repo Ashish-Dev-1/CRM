@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class TenancyGuarantors extends Model
 {
     protected $table = 'tenancy_guarantors';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -29,22 +29,18 @@ class TenancyGuarantors extends Model
     /**
      * Get the tenancy that the guarantor is associated with.
      */
-    
 
     /**
      * Get the guarantor associated with the tenancy.
      */
-    
 
     /**
      * Get the employee who created the tenancy guarantor record.
      */
-    
 
     /**
      * Get the employee who updated the tenancy guarantor record.
      */
-    
 
     /**
      * Get the Guarantor associated with this record.

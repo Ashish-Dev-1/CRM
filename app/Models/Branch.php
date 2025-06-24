@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Branch extends Model
 {
     protected $table = 'branch';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -119,52 +119,42 @@ class Branch extends Model
     /**
      * Get the company that owns the branch.
      */
-    
 
     /**
      * Get the country of the branch.
      */
-    
 
     /**
      * Get the current bank name of the branch.
      */
-    
 
     /**
      * Get the client bank name of the branch.
      */
-    
 
     /**
      * Get the employees for the branch.
      */
-    
 
     /**
      * Get the properties for the branch.
      */
-    
 
     /**
      * Get the landlords for the branch.
      */
-    
 
     /**
      * Get the vendors for the branch.
      */
-    
 
     /**
      * Get the valuations for the branch.
      */
-    
 
     /**
      * Get the developments for the branch.
      */
-    
 
     /**
      * Get the Company associated with this record.

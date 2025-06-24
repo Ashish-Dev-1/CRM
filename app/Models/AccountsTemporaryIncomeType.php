@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class AccountsTemporaryIncomeType extends Model
 {
     protected $table = 'accounts_temporary_income_type';
-    protected $primaryKey = 'tinyInteger';
+    
     public $timestamps = false;
 
         protected $fillable = [

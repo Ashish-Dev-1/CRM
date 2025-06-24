@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Guarantor extends Model
 {
     protected $table = 'guarantor';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -81,32 +81,26 @@ class Guarantor extends Model
     /**
      * Get the title of the guarantor.
      */
-    
 
     /**
      * Get the country of the guarantor.
      */
-    
 
     /**
      * Get the employee who created the guarantor.
      */
-    
 
     /**
      * Get the employee who updated the guarantor.
      */
-    
 
     /**
      * Get the tenancy relationships for the guarantor.
      */
-    
 
     /**
      * Get the income records for the guarantor.
      */
-    
 
     /**
      * Get the Bank associated with this record.

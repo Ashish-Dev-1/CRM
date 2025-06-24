@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Tenancy extends Model
 {
     protected $table = 'tenancy';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -205,117 +205,94 @@ class Tenancy extends Model
     /**
      * Get the property of the tenancy.
      */
-    
 
     /**
      * Get the branch of the tenancy.
      */
-    
 
     /**
      * Get the status of the tenancy.
      */
-    
 
     /**
      * Get the rent frequency of the tenancy.
      */
-    
 
     /**
      * Get the rent payable of the tenancy.
      */
-    
 
     /**
      * Get the service charge frequency of the tenancy.
      */
-    
 
     /**
      * Get the insurance frequency of the tenancy.
      */
-    
 
     /**
      * Get the service charge payable of the tenancy.
      */
-    
 
     /**
      * Get the insurance payable of the tenancy.
      */
-    
 
     /**
      * Get the service charge agreement of the tenancy.
      */
-    
 
     /**
      * Get the insurance agreement of the tenancy.
      */
-    
 
     /**
      * Get the service charge payment method of the tenancy.
      */
-    
 
     /**
      * Get the insurance payment method of the tenancy.
      */
-    
 
     /**
      * Get the management fee type of the tenancy.
      */
-    
 
     /**
      * Get the tenant find with management fee type of the tenancy.
      */
-    
 
     /**
      * Get the rent increase negotiator of the tenancy.
      */
-    
 
     /**
      * Get the tenants of the tenancy.
      */
-    
 
     /**
      * Get the guarantors of the tenancy.
      */
-    
 
     /**
      * Get the allowed occupants of the tenancy.
      */
-    
 
     /**
      * Get the deposit contributors of the tenancy.
      */
-    
 
     /**
      * Get the additional clauses of the tenancy.
      */
-    
 
     /**
      * Get the rent log of the tenancy.
      */
-    
 
     /**
      * Get the updates for the tenancy.
      */
-    
 
     /**
      * Get the Branch associated with this record.

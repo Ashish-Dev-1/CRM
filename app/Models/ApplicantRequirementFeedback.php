@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class ApplicantRequirementFeedback extends Model
 {
     protected $table = 'applicant_requirement_feedback';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -42,32 +42,26 @@ class ApplicantRequirementFeedback extends Model
     /**
      * Get the applicant requirement that this feedback belongs to.
      */
-    
 
     /**
      * Get the property that this feedback is about.
      */
-    
 
     /**
      * Get the employee who arranged this feedback.
      */
-    
 
     /**
      * Get the employee who provided this feedback.
      */
-    
 
     /**
      * Get the employee who created this feedback.
      */
-    
 
     /**
      * Get the employee who updated this feedback.
      */
-    
 
     /**
      * Get the Employee associated with this record.

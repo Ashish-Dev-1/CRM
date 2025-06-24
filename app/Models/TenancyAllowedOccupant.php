@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class TenancyAllowedOccupant extends Model
 {
     protected $table = 'tenancy_allowed_occupant';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -33,17 +33,14 @@ class TenancyAllowedOccupant extends Model
     /**
      * Get the tenancy that this occupant belongs to.
      */
-    
 
     /**
      * Get the employee who created this occupant.
      */
-    
 
     /**
      * Get the employee who updated this occupant.
      */
-    
 
     /**
      * Get the Title associated with this record.

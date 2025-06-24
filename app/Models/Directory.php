@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Directory extends Model
 {
     protected $table = 'directory';
-    protected $primaryKey = 'integer';
+    
     public $timestamps = false;
 
         protected $fillable = [
@@ -77,67 +77,54 @@ class Directory extends Model
     /**
      * Get the category of the directory.
      */
-    
 
     /**
      * Get the country of the directory.
      */
-    
 
     /**
      * Get the bank of the directory.
      */
-    
 
     /**
      * Get the status of the directory.
      */
-    
 
     /**
      * Get the payment terms of the directory.
      */
-    
 
     /**
      * Get the landlord contractor of the directory.
      */
-    
 
     /**
      * Get the commission scheme of the directory.
      */
-    
 
     /**
      * Get the nominal code of the directory.
      */
-    
 
     /**
      * Get the VAT rate of the directory.
      */
-    
 
     /**
      * Get the employee who created the directory.
      */
-    
 
     /**
      * Get the employee who updated the directory.
      */
-    
 
     /**
      * Get the individuals for the directory.
      */
-    
 
     /**
      * Get the trades for the directory.
      */
-    
 
     /**
      * Get the Bank associated with this record.
