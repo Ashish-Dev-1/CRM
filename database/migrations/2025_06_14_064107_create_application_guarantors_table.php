@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('application_guarantors', function (Blueprint $table) {
             $table->integer('application_guarantor_id')->primary();
             $table->integer('application_id')->nullable();
-            $table->tinyInteger('application_guarantor_title')->nullable();
+            $table->integer('application_guarantor_title')->nullable();
             $table->string('application_guarantor_first_name', 30)->nullable();
             $table->string('application_guarantor_surname', 255)->nullable();
             $table->string('application_guarantor_telephone_numbers', 255)->nullable();
@@ -29,14 +29,14 @@ return new class extends Migration
             $table->tinyInteger('application_guarantor_employment_status')->nullable();
             $table->string('application_guarantor_employment_nature', 255)->nullable();
             $table->decimal('application_guarantor_income', 10, 2)->nullable();
-            $table->smallInteger('application_guarantor_nationality')->nullable();
+            $table->unsignedSmallInteger('application_guarantor_nationality')->nullable();
             $table->string('application_guarantor_applicant_name', 255)->nullable();
             // Foreign keys
             $table->foreign('application_guarantor_title', 'fk_application_guarantor_application_guarantor_title')
                 ->references('title_id')->on('title')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('application_id', 'fk_application_guarantor_application_id')
-                ->references('application_id')->on('application')
+                ->references('application_id')->on('applications')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('application_guarantor_employment_status', 'fk_application_guarantor_application_guarantor_employment_s')
                 ->references('employment_status_id')->on('employment_status')

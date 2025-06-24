@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('property_log_status', function (Blueprint $table) {
             $table->integer('property_log_status_id')->primary();
-            $table->integer('property_id')->nullable();
+            $table->unsignedInteger('property_id')->nullable();
             $table->integer('property_status_old')->nullable();
             $table->integer('property_status_new')->nullable();
             $table->text('property_status_notes')->nullable();

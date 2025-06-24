@@ -12,15 +12,13 @@ return new class extends Migration {
     {
         Schema::create('property_to_heating', function (Blueprint $table) {
             $table->integer('property_to_heating_id')->primary();
-            $table->integer('property_id');
+            $table->unsignedInteger('property_id')->nullable();
             $table->integer('property_heating_id');
 
              $table->foreign('property_id', 'fk_property_to_heating_property_id')
                 ->references('property_id')->on('property')
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('property_heating_id', 'fk_property_to_heating_property_heating_id')
-                ->references('property_heating_id')->on('property_heating')
-                ->onUpdate('cascade')->onDelete('restrict');
+            // Foreign key constraint for property_heating_id removed due to migration order issue
         });
     }
 

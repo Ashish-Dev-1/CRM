@@ -19,9 +19,7 @@ return new class extends Migration
             $table->foreign('employee_id', 'fk_employee_to_permissions_employee_id')
                 ->references('employee_id')->on('employee')
                 ->onUpdate('no action')->onDelete('no action');
-            $table->foreign('employee_permissions_id', 'fk_employee_to_permissions_employee_permissions_id')
-                ->references('employee_permissions_id')->on('employee_permissions')
-                ->onUpdate('cascade')->onDelete('restrict');
+            // Foreign key constraint for employee_permissions_id removed due to migration order issue
         });
     }
 

@@ -12,10 +12,10 @@ return new class extends Migration {
     {
         Schema::create('tenancy_tenants', function (Blueprint $table) {
             $table->id('tenancy_tenants_id');
-            $table->integer('tenant_id')->nullable();
+            $table->unsignedBigInteger('tenant_id')->nullable();
             $table->integer('tenancy_id')->nullable();
             $table->tinyInteger('tenant_lead')->nullable();
-            $table->integer('property_id')->nullable();
+            $table->unsignedInteger('property_id')->nullable();
 
             $table->foreign('tenant_id', 'fk_tenancy_tenants_tenant_id')
                 ->references('tenant_id')->on('tenant')

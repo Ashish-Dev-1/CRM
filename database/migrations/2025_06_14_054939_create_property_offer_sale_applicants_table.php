@@ -16,11 +16,9 @@ return new class extends Migration {
             $table->integer('applicant_id')->nullable();
 
             // Foreign keys
-            $table->foreign('property_offer_sale_id', 'fk_property_offer_sale_applicants_property_offer_sale_id')
-                ->references('property_offer_sale_id')->on('property_offer_sale')
-                ->onUpdate('cascade')->onDelete('cascade');
+            // Foreign key constraint for property_offer_sale_id removed due to migration order issue
             $table->foreign('applicant_id', 'fk_property_offer_sale_applicants_applicant_id')
-                ->references('applicant_id')->on('applicant')
+                ->references('applicant_id')->on('applicants')
                 ->onUpdate('cascade')->onDelete('restrict');
         });
     }

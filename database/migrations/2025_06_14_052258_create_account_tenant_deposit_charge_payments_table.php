@@ -27,7 +27,7 @@ return new class extends Migration
                 ->references('payment_method_id')->on('accounts_payment_method')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('tenant_deposit_charge_payment_tenant_deposit_charge_id', 'fk_acc_ten_dep_cha_pay_ten_dep_cha_pay_ten_dep_cha_id')
-                ->references('tenant_deposit_charge_id')->on('accounts_tenant_deposit_charge')
+                ->references('tenant_deposit_charge_id')->on('accounts_tenant_deposit_charges')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('tenant_deposit_charge_payment_created_by', 'fk_accounts_tenant_deposit_charge_payment_tenant_deposi')
                 ->references('employee_id')->on('employee')

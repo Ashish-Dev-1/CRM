@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('referral_updates', function (Blueprint $table) {
             $table->integer('referral_updates_id')->primary();
-            $table->integer('referral_updates_referral_id')->nullable();
+            $table->unsignedBigInteger('referral_updates_referral_id')->nullable();
             $table->text('referral_updates_public_notes')->nullable();
             $table->text('referral_updates_private_notes')->nullable();
             $table->tinyInteger('referral_updates_notify_directory_company')->nullable();

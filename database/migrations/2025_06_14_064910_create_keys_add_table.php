@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('keys_add', function (Blueprint $table) {
             $table->increments('keys_add_id');
-            $table->integer('keys_add_property')->nullable();
-            $table->tinyInteger('keys_add_from')->nullable();
+            $table->unsignedInteger('keys_add_property')->nullable();
+            $table->unsignedTinyInteger('keys_add_from')->nullable();
             $table->tinyInteger('keys_add_quantity')->nullable();
             $table->text('keys_add_notes')->nullable();
             $table->dateTime('keys_add_date_created')->nullable();

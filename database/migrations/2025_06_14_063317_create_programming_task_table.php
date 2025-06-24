@@ -16,7 +16,7 @@ return new class extends Migration
             $table->text('programming_task_description')->nullable();
             $table->tinyInteger('programming_task_severity')->nullable();
             $table->integer('programming_task_sort')->nullable();
-            $table->tinyInteger('programming_task_status')->nullable();
+            $table->unsignedTinyInteger('programming_task_status')->nullable();
             $table->dateTime('programming_task_date_created')->nullable();
             $table->dateTime('programming_task_date_updated')->nullable();
             $table->integer('programming_task_created_by')->nullable();

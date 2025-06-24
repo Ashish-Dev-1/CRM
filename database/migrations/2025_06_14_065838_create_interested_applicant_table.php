@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('interested_applicant', function (Blueprint $table) {
             $table->increments('interested_applicant_id');
             $table->integer('interested_applicant_applicant_id')->nullable();
-            $table->integer('interested_applicant_property')->nullable();
+            $table->unsignedInteger('interested_applicant_property')->nullable();
             $table->text('interested_applicant_notes')->nullable();
             $table->tinyInteger('interested_applicant_status')->default(2);
             $table->text('interested_applicant_status_reason')->nullable();
@@ -25,7 +25,7 @@ return new class extends Migration
 
             // Foreign keys (update table/column names as needed)
             $table->foreign('interested_applicant_applicant_id', 'fk_interested_applicant_applicant')
-                ->references('applicant_id')->on('applicant')
+                ->references('applicant_id')->on('applicants')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('interested_applicant_property', 'fk_interested_applicant_property')
                 ->references('property_id')->on('property')

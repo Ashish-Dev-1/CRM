@@ -16,9 +16,9 @@ return new class extends Migration {
             $table->integer('property_offer_sale_id')->nullable();
             $table->string('property_offer_sale_chain_name', 255)->nullable();
             $table->string('property_offer_sale_chain_property_address', 255)->nullable();
-            $table->integer('property_offer_vendor_property_id')->nullable();
+            $table->unsignedInteger('property_offer_vendor_property_id')->nullable();
             $table->string('property_offer_sale_chain_buyers_name', 255)->nullable();
-            $table->integer('property_offer_buyer_property_id')->nullable();
+            $table->unsignedInteger('property_offer_buyer_property_id')->nullable();
             $table->decimal('property_offer_sale_chain_sale_price', 11, 2)->nullable();
             $table->tinyInteger('property_offer_sale_chain_selling')->nullable();
             $table->text('property_offer_sale_chain_estate_agent_details')->nullable();
@@ -49,9 +49,7 @@ return new class extends Migration {
             $table->foreign('property_offer_buyer_property_id', 'fk_property_offer_buyer_property')
                 ->references('property_id')->on('property')
                 ->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('property_offer_sale_id', 'fk_property_offer_sale_chain_property_offer_sale_id')
-                ->references('property_offer_sale_id')->on('property_offer_sale')
-                ->onUpdate('cascade')->onDelete('cascade');
+            // Foreign key constraint for property_offer_sale_id removed due to migration order issue
             $table->foreign('property_offer_sale_chain_position', 'fk_property_offer_sale_chain_property_offer_sale_chain_position')
                 ->references('property_offer_sale_chain_position_id')->on('property_offer_sale_chain_position')
                 ->onUpdate('cascade')->onDelete('restrict');

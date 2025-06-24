@@ -19,9 +19,7 @@ return new class extends Migration
             $table->foreign('employee_id', 'fk_employee_to_department_employee_id')
                 ->references('employee_id')->on('employee')
                 ->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('employee_department_id', 'fk_employee_to_department_employee_department_id')
-                ->references('employee_department_id')->on('employee_department')
-                ->onUpdate('cascade')->onDelete('restrict');
+            // Foreign key constraint for employee_department_id removed due to migration order issue
         });
     }
 

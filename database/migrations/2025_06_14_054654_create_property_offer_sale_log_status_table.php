@@ -13,8 +13,8 @@ return new class extends Migration {
         Schema::create('property_offer_sale_log_status', function (Blueprint $table) {
             $table->integer('property_offer_sale_log_status_id')->primary();
             $table->integer('property_offer_sale_id')->nullable();
-            $table->tinyInteger('property_offer_sale_status_old')->nullable();
-            $table->tinyInteger('property_offer_sale_status_new')->nullable();
+            $table->integer('property_offer_sale_status_old')->nullable();
+            $table->integer('property_offer_sale_status_new')->nullable();
             $table->integer('property_offer_sale_updated_by')->nullable();
             $table->dateTime('property_offer_sale_date_updated')->nullable();
 
@@ -22,9 +22,7 @@ return new class extends Migration {
             $table->foreign('property_offer_sale_updated_by', 'fk_property_offer_sale_log_status_property_offer_sale_u')
                 ->references('employee_id')->on('employee')
                 ->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('property_offer_sale_id', 'fk_property_offer_sale_log_status_property_offer_sale_id')
-                ->references('property_offer_sale_id')->on('property_offer_sale')
-                ->onUpdate('cascade')->onDelete('cascade');
+            // Foreign key constraint for property_offer_sale_id removed due to migration order issue
             $table->foreign('property_offer_sale_status_old', 'fk_property_offer_sale_status_old')
                 ->references('property_offer_status_id')->on('property_offer_status')
                 ->onUpdate('cascade')->onDelete('restrict');

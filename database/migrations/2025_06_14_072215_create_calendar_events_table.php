@@ -21,18 +21,18 @@ return new class extends Migration
             $table->dateTime('calendar_event_start')->nullable();
             $table->dateTime('calendar_event_end')->nullable();
             $table->string('calendar_event_location', 255)->nullable();
-            $table->tinyInteger('calendar_event_type')->nullable();
+            $table->integer('calendar_event_type')->nullable();
             $table->integer('calendar_event_employee')->nullable();
             $table->text('calendar_event_description')->nullable();
             $table->integer('calendar_event_attendee_type')->nullable();
-            $table->integer('calendar_event_property')->nullable();
+            $table->unsignedInteger('calendar_event_property')->nullable();
             $table->integer('calendar_event_tenancy')->nullable();
             $table->integer('calendar_event_development')->nullable();
             $table->integer('calendar_event_applicant')->nullable();
             $table->integer('calendar_event_valuation')->nullable();
             $table->tinyInteger('calendar_event_valuation_appointment_type')->nullable();
-            $table->tinyInteger('calendar_event_valuation_meeting_with')->nullable();
-            $table->tinyInteger('calendar_event_meet_at')->nullable();
+            $table->unsignedTinyInteger('calendar_event_valuation_meeting_with')->nullable();
+            $table->integer('calendar_event_meet_at')->nullable();
             $table->dateTime('calendar_event_date_created')->nullable();
             $table->dateTime('calendar_event_date_updated')->nullable();
             $table->integer('calendar_event_created_by')->nullable();
@@ -65,7 +65,7 @@ return new class extends Migration
             // $table->timestamps();
             // Foreign keys
             $table->foreign('calendar_event_applicant', 'fk_calendar_event_calendar_event_applicant')
-                ->references('applicant_id')->on('applicant')
+                ->references('applicant_id')->on('applicants')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('calendar_event_branch', 'fk_calendar_event_calendar_event_branch')
                 ->references('branch_id')->on('branch')
@@ -101,13 +101,13 @@ return new class extends Migration
                 ->references('valuation_id')->on('valuation')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('calendar_event_status', 'fk_calendar_event_calendar_event_status')
-                ->references('calendar_event_status_id')->on('calendar_event_status')
+                ->references('calendar_event_status_id')->on('calendar_event_statuses')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('calendar_event_type', 'fk_calendar_event_calendar_event_type')
-                ->references('calendar_event_type_id')->on('calendar_event_type')
+                ->references('calendar_event_type_id')->on('calendar_event_types')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('calendar_event_attendee_type', 'fk_calendar_event_fk_calendar_event_calendar_event_type')
-                ->references('calendar_event_attendee_type_id')->on('calendar_event_attendee_type')
+                ->references('calendar_event_attendee_type_id')->on('calendar_event_attendee_types')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('calendar_event_valuation_appointment_type', 'fk_calendar_event_calendar_event_valuation_appointment_type')
                 ->references('valuation_appointment_type_id')->on('valuation_appointment_type')
@@ -116,28 +116,26 @@ return new class extends Migration
                 ->references('valuation_meeting_with_id')->on('valuation_meeting_with')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('calendar_event_meet_at', 'fk_calendar_event_calendar_event_meet_at')
-                ->references('calendar_event_meet_at_id')->on('calendar_event_meet_at')
+                ->references('calendar_event_meet_at_id')->on('calendar_event_meet_ats')
                 ->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('calendar_event_recurring_id', 'fk_calendar_event_calendar_event_recurring_id')
-                ->references('calendar_event_recurring_id')->on('calendar_event_recurring')
-                ->onUpdate('cascade')->onDelete('restrict');
+            // Foreign key constraint for calendar_event_recurring_id removed due to migration order issue
             $table->foreign('calendar_event_inspection_type', 'fk_calendar_event_calendar_event_inspection_type')
-                ->references('calendar_event_inspection_type_id')->on('calendar_event_inspection_type')
+                ->references('calendar_event_inspection_type_id')->on('calendar_event_inspection_types')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('calendar_event_survey_type', 'fk_calendar_event_calendar_event_survey_type')
-                ->references('calendar_event_survey_type_id')->on('calendar_event_survey_type')
+                ->references('calendar_event_survey_type_id')->on('calendar_event_survey_types')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('calendar_event_time_off_type', 'fk_calendar_event_calendar_event_time_off_type')
-                ->references('calendar_event_time_off_type_id')->on('calendar_event_time_off_type')
+                ->references('calendar_event_time_off_type_id')->on('calendar_event_time_off_types')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('calendar_event_time_off_reason', 'fk_calendar_event_calendar_event_time_off_reason')
-                ->references('calendar_event_time_off_reason_id')->on('calendar_event_time_off_reason')
+                ->references('calendar_event_time_off_reason_id')->on('calendar_event_time_off_reasons')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('calendar_event_time_off_pay', 'fk_calendar_event_calendar_event_time_off_pay')
-                ->references('calendar_event_time_off_pay_id')->on('calendar_event_time_off_pay')
+                ->references('calendar_event_time_off_pay_id')->on('calendar_event_time_off_pays')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('calendar_event_letting_application', 'fk_calendar_event_calendar_event_letting_application')
-                ->references('application_id')->on('application')
+                ->references('application_id')->on('applications')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('calendar_event_extra_hours_reward_type', 'fk_calendar_event_calendar_event_extra_hours_reward_type')
                 ->references('id')->on('extra_hours_reward_type')

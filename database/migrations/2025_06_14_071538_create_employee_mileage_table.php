@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('employee_mileage', function (Blueprint $table) {
             $table->integer('employee_mileage_id')->primary();
             $table->integer('employee_mileage_employee_id')->nullable();
-            $table->smallInteger('employee_mileage_vehicle_id')->nullable();
+            $table->integer('employee_mileage_vehicle_id')->nullable();
             $table->date('employee_mileage_journey_date')->nullable();
             $table->string('employee_mileage_start_postcode', 8)->nullable();
             $table->string('employee_mileage_end_postcode', 8)->nullable();

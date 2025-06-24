@@ -26,9 +26,6 @@ return new class extends Migration
             $table->integer('tenant_charge_payment_updated_by')->nullable();
 
              // Foreign keys
-            $table->foreign('accounts_tenant_charge_payment_type', 'fk_acc_ten_cha_pay_acc_ten_cha_pay_typ')
-                ->references('accounts_tenant_charge_payment_type_id')->on('accounts_tenant_charge_payment_type')
-                ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('tenant_charge_payment_tenant_charge_id', 'fk_acc_ten_cha_pay_ten_cha_pay_ten_cha_id')
                 ->references('tenant_charge_id')->on('accounts_tenant_charge')
                 ->onUpdate('cascade')->onDelete('restrict');

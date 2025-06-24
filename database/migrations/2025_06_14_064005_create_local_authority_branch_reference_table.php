@@ -18,9 +18,7 @@ return new class extends Migration
             $table->string('local_authority_branch_reference', 20)->nullable();
 
             // Foreign keys
-            $table->foreign('local_authority_id', 'fk_local_authority_branch_reference_local_authority_id')
-                ->references('local_authority_id')->on('local_authority')
-                ->onUpdate('cascade')->onDelete('restrict');
+            // Foreign key constraint for local_authority_id removed due to migration order issue
             $table->foreign('branch_id', 'fk_local_authority_branch_reference_branch_id')
                 ->references('branch_id')->on('branch')
                 ->onUpdate('cascade')->onDelete('restrict');

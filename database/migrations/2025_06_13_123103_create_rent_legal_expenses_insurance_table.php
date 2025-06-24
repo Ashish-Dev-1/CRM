@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->integer('rlei_id')->primary();
             $table->tinyInteger('rlei_policy_type')->nullable();
             $table->integer('rlei_tenancy_id')->nullable();
-            $table->integer('rlei_property_id')->nullable();
+            $table->unsignedInteger('rlei_property_id')->nullable();
             $table->integer('rlei_room_id')->nullable();
             $table->string('rlei_policy_ref', 50)->nullable();
             $table->date('rlei_policy_start_date')->nullable();

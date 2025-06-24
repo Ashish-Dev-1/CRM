@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('landlord_attachments', function (Blueprint $table) {
             $table->increments('landlord_attachments_id');
-            $table->integer('landlord_id')->nullable();
+            $table->unsignedInteger('landlord_id')->nullable();
             $table->string('landlord_attachments_file_name', 255)->nullable();
             $table->integer('landlord_attachments_file_size')->nullable();
             $table->string('landlord_attachments_caption', 100)->nullable();

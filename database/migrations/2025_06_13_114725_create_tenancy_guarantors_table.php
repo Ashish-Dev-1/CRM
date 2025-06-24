@@ -15,9 +15,9 @@ return new class extends Migration {
             $table->integer('guarantor_id')->nullable();
             $table->integer('tenancy_id')->nullable();
 
-            $table->foreign('guarantor_id', 'fk_tenancy_guarantors_guarantor_id')
-                ->references('guarantor_id')->on('guarantor')
-                ->onUpdate('cascade')->onDelete('restrict');
+            // Note: Foreign key constraint for guarantor_id is removed here because 
+            // the guarantor table is created after this migration.
+            // This constraint should be added in a separate migration.
             $table->foreign('tenancy_id', 'fk_tenancy_guarantors_tenancy_id')
                 ->references('tenancy_id')->on('tenancy')
                 ->onUpdate('cascade')->onDelete('restrict');

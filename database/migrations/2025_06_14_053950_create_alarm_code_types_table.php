@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('alarm_code_types', function (Blueprint $table) {
-            $table->tinyInteger('alarm_code_type_id')->primary();
+            $table->unsignedTinyInteger('alarm_code_type_id')->primary();
             $table->string('alarm_code_type_name', 50)->nullable();
         });
     }

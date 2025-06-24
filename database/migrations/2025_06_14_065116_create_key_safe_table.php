@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('key_safe', function (Blueprint $table) {
             $table->increments('key_safe_id');
-            $table->integer('key_safe_property')->nullable();
+            $table->unsignedInteger('key_safe_property')->nullable();
             $table->integer('key_safe_development')->nullable();
             $table->string('key_safe_code', 10)->nullable();
-            $table->tinyInteger('key_safe_location')->nullable();
+            $table->unsignedTinyInteger('key_safe_location')->nullable();
             $table->text('key_safe_contains')->nullable();
             $table->text('key_safe_notes')->nullable();
             $table->date('key_safe_date_added')->nullable();

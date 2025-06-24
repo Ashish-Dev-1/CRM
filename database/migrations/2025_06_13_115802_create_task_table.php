@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->date('task_date_tbc')->nullable();
             $table->date('task_deadline')->nullable();
             $table->tinyInteger('task_routine')->nullable();
-            $table->integer('task_status')->nullable();
+            $table->tinyInteger('task_status')->nullable();
             $table->smallInteger('task_sort')->nullable();
             $table->dateTime('task_date_created')->nullable();
             $table->integer('task_created_by')->nullable();

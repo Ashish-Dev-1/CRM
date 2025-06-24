@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('applicants', function (Blueprint $table) {
             $table->integer('applicant_id')->primary();
             $table->string('applicant_token', 40)->nullable();
-            $table->tinyInteger('applicant_type')->default(1);
-            $table->tinyInteger('applicant_sub_type')->nullable();
-            $table->tinyInteger('applicant_title')->nullable();
+            $table->integer('applicant_type')->default(1);
+            $table->unsignedTinyInteger('applicant_sub_type')->nullable();
+            $table->integer('applicant_title')->nullable();
             $table->string('applicant_first_name', 255)->nullable();
             $table->string('applicant_surname', 255)->nullable();
             $table->string('applicant_company_name', 255)->nullable();
@@ -35,7 +35,7 @@ return new class extends Migration
             $table->string('applicant_postcode', 8)->nullable();
             $table->integer('applicant_country')->nullable();
             $table->integer('applicant_branch')->nullable();
-            $table->tinyInteger('applicant_purchase_finance')->nullable();
+            $table->integer('applicant_purchase_finance')->nullable();
             $table->tinyInteger('applicant_purchase_type')->nullable();
             $table->tinyInteger('applicant_purchase_chain')->nullable();
             $table->tinyInteger('applicant_purchase_chain_status')->default(4);
@@ -54,10 +54,10 @@ return new class extends Migration
             $table->tinyInteger('applicant_lead_source')->nullable();
             $table->text('applicant_lead_source_notes')->nullable();
             $table->tinyInteger('applicant_referral_valuation_closed')->default(2);
-            $table->date('applicant_referral_valuation_next_review_date')->default('0000-00-00');
+            $table->date('applicant_referral_valuation_next_review_date')->nullable();
             $table->text('applicant_referral_valuation_next_review_notes')->nullable();
             $table->tinyInteger('applicant_referral_mortgage_closed')->default(2);
-            $table->date('applicant_referral_mortgage_next_review_date')->default('0000-00-00');
+            $table->date('applicant_referral_mortgage_next_review_date')->nullable();
             $table->text('applicant_referral_mortgage_next_review_notes')->nullable();
             $table->string('applicant_rightmove_email_id', 15)->nullable();
             $table->integer('applicant_negotiator')->nullable();
@@ -83,7 +83,7 @@ return new class extends Migration
                 ->references('title_id')->on('title')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('applicant_type', 'fk_applicant_applicant_type')
-                ->references('body_type_id')->on('body_type')
+                ->references('body_type_id')->on('body_types')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('applicant_updated_by', 'fk_applicant_applicant_updated_by')
                 ->references('employee_id')->on('employee')
@@ -95,7 +95,7 @@ return new class extends Migration
                 ->references('property_offer_sale_type_id')->on('property_offer_sale_type')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('applicant_lead_source', 'fk_applicant_applicant_lead_source')
-                ->references('applicant_lead_source_id')->on('applicant_lead_source')
+                ->references('applicant_lead_source_id')->on('applicant_lead_sources')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('applicant_negotiator', 'fk_applicant_applicant_negotiator')
                 ->references('employee_id')->on('employee')

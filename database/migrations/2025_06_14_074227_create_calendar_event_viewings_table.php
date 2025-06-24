@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('calendar_event_viewing_pros')->nullable();
             $table->text('calendar_event_viewing_cons')->nullable();
             $table->decimal('calendar_event_viewing_ptp', 11, 2)->nullable();
-            $table->tinyInteger('calendar_event_viewing_confidence_level')->nullable();
+            $table->integer('calendar_event_viewing_confidence_level')->nullable();
             $table->text('calendar_event_viewing_public_notes')->nullable();
             $table->text('calendar_event_viewing_private_notes')->nullable();
             $table->tinyInteger('calendar_event_viewing_type')->nullable();
@@ -40,7 +40,7 @@ return new class extends Migration
                 ->references('calendar_event_id')->on('calendar_event')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('calendar_event_viewing_confidence_level', 'fk_calendar_event_viewing_calendar_event_viewing_confidence')
-                ->references('calendar_event_confidence_id')->on('calendar_event_confidence')
+                ->references('calendar_event_confidence_id')->on('calendar_event_confidences')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('calendar_event_viewing_type', 'fk_calendar_event_viewing_calendar_event_viewing_type')
                 ->references('calendar_event_viewing_type_id')->on('calendar_event_viewing_type')

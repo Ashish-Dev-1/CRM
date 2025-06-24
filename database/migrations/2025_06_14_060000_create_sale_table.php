@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('sale', function (Blueprint $table) {
             $table->integer('sale_id')->primary();
             $table->integer('sale_offer_id')->nullable();
-            $table->integer('sale_property')->nullable();
+            $table->unsignedInteger('sale_property')->nullable();
             $table->date('sale_agreed_date')->nullable();
             $table->decimal('sale_agreed_price', 10, 2)->nullable();
             $table->integer('sale_purchase_finance')->nullable();
@@ -39,8 +39,8 @@ return new class extends Migration {
             $table->text('sale_next_review_notes')->nullable();
             $table->boolean('sale_media_utilities')->default(1);
             $table->decimal('sale_commission_completion_payment', 6, 2)->nullable();
-            $table->tinyInteger('sale_commission_completion_payment_type')->nullable();
-            $table->date('sale_commission_completion_date_paid')->default('0000-00-00');
+            $table->integer('sale_commission_completion_payment_type')->nullable();
+            $table->date('sale_commission_completion_date_paid')->nullable();
             $table->date('sale_completion_date')->nullable();
             $table->tinyInteger('sale_invoice_check_override')->default(2);
             $table->tinyInteger('sale_auto_progression_chase_vendor')->default(1);

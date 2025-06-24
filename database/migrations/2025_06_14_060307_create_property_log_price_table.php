@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('property_log_price', function (Blueprint $table) {
             $table->integer('property_log_price_id')->primary();
-            $table->integer('property_id')->nullable();
+            $table->unsignedInteger('property_id')->nullable();
             $table->decimal('property_price_old', 11, 2)->nullable();
             $table->decimal('property_price_new', 11, 2)->nullable();
             $table->boolean('property_published')->nullable();

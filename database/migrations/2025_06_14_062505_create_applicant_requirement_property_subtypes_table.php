@@ -20,7 +20,7 @@ return new class extends Migration
                 ->references('property_type_id')->on('property_type')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('ar_id', 'fk_applicant_requirement_property_subtype_')
-                ->references('ar_id')->on('applicant_requirement')
+                ->references('ar_id')->on('applicant_requirements')
                 ->onUpdate('cascade')->onDelete('restrict');
         });
     }

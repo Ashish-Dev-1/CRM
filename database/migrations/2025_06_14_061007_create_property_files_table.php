@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('property_files', function (Blueprint $table) {
             $table->integer('file_id')->primary();
-            $table->integer('property_id');
+            $table->unsignedInteger('property_id');
             $table->string('filename', 100);
             $table->string('caption', 100)->nullable();
             $table->dateTime('date_added')->nullable();

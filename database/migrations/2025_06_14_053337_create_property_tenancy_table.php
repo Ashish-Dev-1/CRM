@@ -12,17 +12,17 @@ return new class extends Migration {
     {
         Schema::create('property_tenancy', function (Blueprint $table) {
             $table->integer('property_tenancy_id')->primary();
-            $table->integer('property_id')->nullable();
+            $table->unsignedInteger('property_id')->nullable();
             $table->string('property_tenancy_description', 255)->nullable();
             $table->string('property_tenancy_tenant', 255)->nullable();
             $table->tinyInteger('property_tenancy_bedrooms')->nullable();
             $table->decimal('property_tenancy_size', 8, 2)->nullable();
             $table->tinyInteger('property_tenancy_size_unit')->nullable();
             $table->decimal('property_tenancy_rent', 11, 2)->nullable();
-            $table->tinyInteger('property_tenancy_rent_frequency')->nullable();
+            $table->integer('property_tenancy_rent_frequency')->nullable();
             $table->decimal('property_tenancy_erv', 11, 2)->nullable();
-            $table->tinyInteger('property_tenancy_erv_frequency')->nullable();
-            $table->tinyInteger('property_tenancy_lease_type')->nullable();
+            $table->integer('property_tenancy_erv_frequency')->nullable();
+            $table->unsignedTinyInteger('property_tenancy_lease_type')->nullable();
             $table->date('property_tenancy_lease_start_date')->nullable();
             $table->date('property_tenancy_lease_expiry_date')->nullable();
             $table->text('property_tenancy_public_notes')->nullable();

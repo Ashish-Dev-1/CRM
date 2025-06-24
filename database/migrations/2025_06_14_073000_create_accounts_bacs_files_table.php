@@ -31,8 +31,8 @@ return new class extends Migration
             $table->integer('bacs_file_directory_id')->nullable();
             $table->date('bacs_file_payment_date')->nullable();
             $table->tinyInteger('bacs_file_disbursement_DEL')->nullable();
-            $table->smallInteger('bacs_file_nominal_code')->nullable();
-            $table->tinyInteger('bacs_file_vat_rate')->nullable();
+            $table->unsignedSmallInteger('bacs_file_nominal_code')->nullable();
+            $table->unsignedTinyInteger('bacs_file_vat_rate')->nullable();
             $table->decimal('bacs_file_vat_amount', 10, 2)->nullable();
             $table->boolean('bacs_file_exported')->default(2);
             $table->dateTime('bacs_file_date_created')->nullable();
@@ -55,7 +55,7 @@ return new class extends Migration
                 ->references('nominal_code_id')->on('accounts_nominal_code')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('bacs_file_vat_rate')
-                ->references('vat_rate_id')->on('accounts_vat_rate')
+                ->references('vat_rate_id')->on('accounts_vat_rates')
                 ->onUpdate('cascade')->onDelete('restrict');
         });
     }

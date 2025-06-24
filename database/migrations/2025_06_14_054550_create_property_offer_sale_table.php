@@ -12,9 +12,9 @@ return new class extends Migration {
     {
         Schema::create('property_offer_sale', function (Blueprint $table) {
             $table->integer('property_offer_sale_id')->primary();
-            $table->integer('property_offer_sale_property')->nullable();
+            $table->unsignedInteger('property_offer_sale_property')->nullable();
             $table->decimal('property_offer_sale_price', 10, 2)->nullable();
-            $table->tinyInteger('property_offer_sale_finance')->nullable();
+            $table->integer('property_offer_sale_finance')->nullable();
             $table->tinyInteger('property_offer_sale_mortgage_deposit', false, true)->nullable();
             $table->tinyInteger('property_offer_sale_type')->nullable();
             $table->tinyInteger('property_offer_sale_survey')->nullable();

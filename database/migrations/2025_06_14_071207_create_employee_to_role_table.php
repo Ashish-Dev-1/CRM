@@ -21,12 +21,8 @@ return new class extends Migration
                 ->onUpdate('cascade')->onDelete('restrict');
             // The following foreign key references employee_id again, which may be a mistake in your SQL.
             // If you want to keep it, uncomment the next lines:
-            // $table->foreign('employee_role_id', 'fk_employee_to_role_role')
-            //     ->references('employee_id')->on('employee')
-            //     ->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('employee_role_id', 'fk_employee_to_role_employee_role_id')
-                ->references('employee_role_id')->on('employee_role')
-                ->onUpdate('cascade')->onDelete('restrict');
+            // // Foreign key constraint for employee_role_id removed due to migration order issue
+            // Foreign key constraint for employee_role_id removed due to migration order issue
         });
     }
 

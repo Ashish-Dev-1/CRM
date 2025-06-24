@@ -25,7 +25,7 @@ return new class extends Migration
                 ->references('employee_id')->on('employee')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('application_updates_application_id', 'fk_application_updates_application_updates_application_id')
-                ->references('application_id')->on('application')
+                ->references('application_id')->on('applications')
                 ->onUpdate('cascade')->onDelete('restrict');
         });
     }

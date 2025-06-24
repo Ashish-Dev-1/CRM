@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('keys_transaction', function (Blueprint $table) {
             $table->increments('keys_transaction_id');
-            $table->integer('keys_transaction_set_id')->nullable();
-            $table->integer('keys_transaction_property')->nullable();
-            $table->integer('keys_transaction_client_type')->nullable();
+            $table->unsignedInteger('keys_transaction_set_id')->nullable();
+            $table->unsignedInteger('keys_transaction_property')->nullable();
+            $table->unsignedTinyInteger('keys_transaction_client_type')->nullable();
             $table->integer('keys_transaction_client')->nullable();
             $table->tinyInteger('keys_transaction_quantity')->nullable();
             $table->dateTime('keys_transaction_out')->nullable();

@@ -10,7 +10,7 @@ return new class extends Migration
         Schema::create('directory_individual', function (Blueprint $table) {
             $table->integer('directory_individual_id')->primary();
             $table->integer('directory_individual_company')->nullable();
-            $table->tinyInteger('directory_individual_title')->nullable();
+            $table->integer('directory_individual_title')->nullable();
             $table->string('directory_individual_first_name', 30)->nullable();
             $table->string('directory_individual_surname', 30)->nullable();
             $table->string('directory_individual_phone_home')->nullable();
@@ -38,7 +38,7 @@ return new class extends Migration
             $table->integer('directory_individual_updated_by')->nullable();
 
             $table->foreign('directory_individual_bank_name', 'fk_directory_individual_directory_individual_bank_name')
-                ->references('bank_id')->on('bank')
+                ->references('bank_id')->on('banks')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('directory_individual_created_by', 'fk_directory_individual_directory_individual_created_by')
                 ->references('employee_id')->on('employee')

@@ -12,14 +12,12 @@ return new class extends Migration {
     {
         Schema::create('property_to_accessibility', function (Blueprint $table) {
             $table->integer('property_to_accessibility_id')->primary();
-            $table->integer('property_id');
+            $table->unsignedInteger('property_id')->nullable();
             $table->integer('property_accessibility_id');
              $table->foreign('property_id', 'fk_property_to_accessibility_property_id')
                 ->references('property_id')->on('property')
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('property_accessibility_id', 'fk_property_to_accessibility_property_accessibility_id')
-                ->references('property_accessibility_id')->on('property_accessibility')
-                ->onUpdate('cascade')->onDelete('restrict');
+            // Foreign key constraint for property_accessibility_id removed due to migration order issue
         });
     }
 

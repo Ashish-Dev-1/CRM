@@ -18,7 +18,7 @@ return new class extends Migration
                 ->references('employee_id')->on('employee')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('certificate_updates_certificate_id', 'fk_certificate_updates_development_certificate_updates_cert')
-                ->references('certificate_id')->on('certificate_development')
+                ->references('certificate_id')->on('certificate_developments')
                 ->onUpdate('cascade')->onDelete('restrict');
         });
     }

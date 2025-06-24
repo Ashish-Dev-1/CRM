@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('buyers', function (Blueprint $table) {
             $table->integer('buyer_id', true);
             $table->string('buyer_token', 40)->nullable();
-            $table->tinyInteger('buyer_type')->nullable();
-            $table->tinyInteger('buyer_title')->nullable();
+            $table->integer('buyer_type')->nullable();
+            $table->integer('buyer_title')->nullable();
             $table->string('buyer_first_name', 30)->nullable();
             $table->string('buyer_surname', 30)->nullable();
             $table->string('buyer_trading_name', 255)->nullable();
@@ -69,7 +69,7 @@ return new class extends Migration
             $table->tinyInteger('buyer_source')->nullable();
             // Foreign keys
             $table->foreign('buyer_bank_name', 'fk_buyer_buyer_bank_name')
-                ->references('bank_id')->on('bank')
+                ->references('bank_id')->on('banks')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('buyer_branch', 'fk_buyer_buyer_branch')
                 ->references('branch_id')->on('branch')
@@ -84,7 +84,7 @@ return new class extends Migration
                 ->references('employee_id')->on('employee')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('buyer_type', 'fk_buyer_buyer_type')
-                ->references('body_type_id')->on('body_type')
+                ->references('body_type_id')->on('body_types')
                 ->onUpdate('no action')->onDelete('no action');
             $table->foreign('buyer_country', 'fk_buyer_buyer_country')
                 ->references('country_id')->on('country')

@@ -13,9 +13,9 @@ return new class extends Migration {
         Schema::create('property_rightmove_performance_statistics', function (Blueprint $table) {
             $table->integer('prps_id')->primary();
             $table->date('prps_date')->nullable();
-            $table->integer('prps_property_id')->nullable();
-            $table->tinyInteger('prps_property_availability')->nullable();
-            $table->tinyInteger('prps_property_status')->nullable();
+            $table->unsignedInteger('prps_property_id')->nullable();
+            $table->integer('prps_property_availability')->nullable();
+            $table->integer('prps_property_status')->nullable();
             $table->tinyInteger('prps_featured_property')->nullable();
             $table->tinyInteger('prps_premium_listing')->nullable();
             $table->integer('prps_total_summary_views')->nullable();

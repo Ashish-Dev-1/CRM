@@ -21,10 +21,10 @@ return new class extends Migration
             $table->tinyInteger('application_task_defaults_sort')->nullable();
             // Foreign keys
             $table->foreign('application_task_defaults_type', 'fk_application_task_defaults_application_task_defaults_type')
-                ->references('application_task_type_id')->on('application_task_type')
+                ->references('application_task_type_id')->on('application_task_types')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('application_task_defaults_status', 'fk_application_task_defaults_application_task_defaults_status')
-                ->references('application_task_status_id')->on('application_task_status')
+                ->references('application_task_status_id')->on('application_task_statuses')
                 ->onUpdate('cascade')->onDelete('restrict');
         });
     }

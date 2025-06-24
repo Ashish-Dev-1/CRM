@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('accounts_invoice', function (Blueprint $table) {
             $table->integer('invoice_id')->primary();
             $table->string('invoice_token', 40)->nullable();
-            $table->integer('invoice_customer_type')->nullable();
+            $table->unsignedTinyInteger('invoice_customer_type')->nullable();
             $table->integer('invoice_customer')->nullable();
             $table->date('invoice_date')->nullable();
             $table->date('invoice_due_date')->nullable();

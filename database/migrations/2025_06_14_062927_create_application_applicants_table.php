@@ -16,13 +16,13 @@ return new class extends Migration
             $table->integer('application_id')->nullable();
             $table->tinyInteger('application_applicant_type')->nullable();
             $table->tinyInteger('application_homeowner')->nullable();
-            $table->tinyInteger('application_title')->nullable();
+            $table->integer('application_title')->nullable();
             $table->string('application_first_name', 255)->nullable();
             $table->string('application_surname', 255)->nullable();
             $table->string('application_telephone_numbers', 255)->nullable();
             $table->string('application_email_address', 255)->nullable();
             $table->date('application_dob')->nullable();
-            $table->smallInteger('application_nationality')->nullable();
+            $table->unsignedSmallInteger('application_nationality')->nullable();
             $table->string('application_nino', 13)->nullable();
             $table->string('application_address_line_1', 255)->nullable();
             $table->string('application_address_line_2', 255)->nullable();
@@ -35,7 +35,7 @@ return new class extends Migration
             $table->string('application_company_trading_name', 255)->nullable();
             $table->string('application_company_registration_number', 10)->nullable();
             $table->string('application_company_vat_registration_number', 20)->nullable();
-            $table->tinyInteger('application_company_title')->nullable();
+            $table->integer('application_company_title')->nullable();
             $table->string('application_company_first_name', 255)->nullable();
             $table->string('application_company_surname', 255)->nullable();
             $table->string('application_company_telephone_numbers', 255)->nullable();
@@ -46,7 +46,7 @@ return new class extends Migration
             $table->string('application_company_ro_post_code', 8)->nullable();
              // Foreign keys
             $table->foreign('application_id', 'fk_application_applicant_application_applicant_id')
-                ->references('applicant_id')->on('applicant')
+                ->references('application_id')->on('applications')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('application_company_title', 'fk_application_applicant_application_company_title')
                 ->references('title_id')->on('title')

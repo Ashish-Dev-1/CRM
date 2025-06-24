@@ -21,7 +21,7 @@ return new class extends Migration
             
             // Add foreign key constraint
             $table->foreign('certificate_id', 'fk_certificate_development_files_certificate_id')
-                ->references('certificate_development')->on('certificate_development')
+                ->references('certificate_id')->on('certificate_developments')
                 ->onUpdate('cascade')->onDelete('restrict');
         });
     }

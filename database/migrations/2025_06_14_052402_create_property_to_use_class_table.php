@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('property_to_use_class', function (Blueprint $table) {
             $table->integer('property_to_use_class_id')->primary();
-            $table->integer('property_id');
+            $table->unsignedInteger('property_id')->nullable();
             $table->integer('property_use_class_id');
 
             $table->foreign('property_id', 'fk_property_to_use_class_property_id')

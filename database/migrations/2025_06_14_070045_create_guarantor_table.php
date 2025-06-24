@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('guarantor', function (Blueprint $table) {
             $table->integer('guarantor_id')->primary();
-            $table->tinyInteger('guarantor_title')->nullable();
+            $table->integer('guarantor_title')->nullable();
             $table->string('guarantor_first_name', 30)
                   
                   
@@ -97,7 +97,7 @@ return new class extends Migration
             $table->integer('guarantor_branch')->nullable();
              // Foreign keys
             $table->foreign('guarantor_bank_name', 'fk_guarantor_guarantor_bank_name')
-                ->references('bank_id')->on('bank')
+                ->references('bank_id')->on('banks')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('guarantor_branch', 'fk_guarantor_guarantor_branch')
                 ->references('branch_id')->on('branch')

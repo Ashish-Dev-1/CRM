@@ -30,9 +30,6 @@ return new class extends Migration {
             $table->foreign('sale_updates_created_by', 'fk_sale_updates_sale_updates_created_by')
                 ->references('employee_id')->on('employee')
                 ->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('sale_updates_sale_id', 'fk_sale_updates_sale_updates_sale_id')
-                ->references('sale_id')->on('sale')
-                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

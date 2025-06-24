@@ -13,12 +13,12 @@ return new class extends Migration {
         Schema::create('referral', function (Blueprint $table) {
             $table->id('referral_id'); // int(11) PRIMARY KEY
             $table->tinyInteger('referral_type')->nullable();
-            $table->tinyInteger('referral_sale_purchase')->nullable();
-            $table->tinyInteger('referral_customer_type')->nullable();
+            $table->unsignedTinyInteger('referral_sale_purchase')->nullable();
+            $table->unsignedTinyInteger('referral_customer_type')->nullable();
             $table->integer('referral_customer')->nullable();
             $table->string('referral_customer_email', 255)->nullable();
             $table->integer('referral_directory_company')->nullable();
-            $table->integer('referral_property')->nullable();
+            $table->unsignedInteger('referral_property')->nullable();
             $table->integer('referral_valuation')->nullable();
             $table->text('referral_notes')->nullable();
             $table->text('referral_notes_private')->nullable();

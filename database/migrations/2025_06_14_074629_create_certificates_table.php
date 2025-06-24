@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('certificate', function (Blueprint $table) {
             $table->integer('certificate_id', true);
-            $table->integer('certificate_property')->nullable();
-            $table->tinyInteger('certificate_type')->nullable();
+            $table->unsignedInteger('certificate_property')->nullable();
+            $table->integer('certificate_type')->nullable();
             $table->string('certificate_reference', 255)->nullable();
             $table->string('certificate_link', 255)->nullable();
             $table->string('certificate_rating', 4)->nullable();
@@ -37,7 +37,7 @@ return new class extends Migration
                 ->references('property_id')->on('property')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('certificate_type', 'fk_certificate_certificate_type')
-                ->references('calendar_event_type_id')->on('calendar_event_type')
+                ->references('calendar_event_type_id')->on('calendar_event_types')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('certificate_renewal_contractor', 'fk_certificate_certificate_renewal_contractor')
                 ->references('directory_id')->on('directory')

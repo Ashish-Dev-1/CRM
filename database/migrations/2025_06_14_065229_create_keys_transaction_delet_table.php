@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('keys_transaction_delet', function (Blueprint $table) {
             $table->increments('keys_transaction_id');
-            $table->integer('keys_transaction_property')->nullable();
+            $table->unsignedInteger('keys_transaction_property')->nullable();
             $table->tinyInteger('keys_transaction_quantity')->nullable();
             $table->string('keys_transaction_to_person', 100)->nullable();
             $table->integer('keys_transaction_to')->nullable();

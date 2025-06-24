@@ -15,14 +15,14 @@ return new class extends Migration
             $table->integer('arp_id')->primary();
             $table->integer('ar_id')->nullable();
             $table->integer('applicant_id')->nullable();
-            $table->integer('property_id')->nullable();
+            $table->unsignedInteger('property_id')->nullable();
             $table->dateTime('arp_date_created')->nullable();
             // Foreign keys
             $table->foreign('ar_id', 'fk_applicant_requirement_properties_ar_id')
-                ->references('ar_id')->on('applicant_requirement')
+                ->references('ar_id')->on('applicant_requirements')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('applicant_id', 'fk_applicant_requirement_properties_applicant_id')
-                ->references('applicant_id')->on('applicant')
+                ->references('applicant_id')->on('applicants')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('property_id', 'fk_applicant_requirement_properties_property_id')
                 ->references('property_id')->on('property')

@@ -20,9 +20,7 @@ return new class extends Migration
             $table->integer('local_authority_id')->nullable();
 
             // Foreign key
-            $table->foreign('local_authority_id', 'fk_local_authority_ward_local_authority_id')
-                ->references('local_authority_id')->on('local_authority')
-                ->onUpdate('cascade')->onDelete('restrict');
+            // Foreign key constraint for local_authority_id removed due to migration order issue
         });
     }
 

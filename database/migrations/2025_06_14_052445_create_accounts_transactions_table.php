@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('accounts_transactions', function (Blueprint $table) {
             $table->integer('transaction_id')->primary();
-            $table->smallInteger('transaction_nominal_code')->nullable();
+            $table->unsignedSmallInteger('transaction_nominal_code')->nullable();
             $table->tinyInteger('transaction_type')->nullable();
-            $table->integer('transaction_customer_type')->nullable();
+            $table->unsignedTinyInteger('transaction_customer_type')->nullable();
             $table->integer('transaction_customer')->nullable();
             $table->date('transaction_date')->nullable();
             $table->string('transaction_due_date', 10)->nullable();
             $table->text('transaction_reference')->nullable();
             $table->text('transaction_details')->nullable();
             $table->text('transaction_notes')->nullable();
-            $table->integer('transaction_property')->nullable();
+            $table->unsignedInteger('transaction_property')->nullable();
             $table->integer('transaction_development')->nullable();
             $table->integer('transaction_tenancy')->nullable();
             $table->integer('transaction_branch')->nullable();
@@ -57,7 +57,7 @@ return new class extends Migration
                 ->references('tenancy_id')->on('tenancy')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('transaction_type', 'fk_accounts_transaction_transaction_type')
-                ->references('transaction_type_id')->on('accounts_transaction_type')
+                ->references('transaction_type_id')->on('accounts_transaction_types')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('transaction_updated_by', 'fk_accounts_transaction_transaction_updated_by')
                 ->references('employee_id')->on('employee')

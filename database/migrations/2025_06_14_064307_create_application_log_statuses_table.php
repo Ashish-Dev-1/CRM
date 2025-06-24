@@ -23,13 +23,13 @@ return new class extends Migration
                 ->references('employee_id')->on('employee')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('application_id', 'fk_application_log_status_application_id')
-                ->references('applicant_id')->on('applicant')
+                ->references('application_id')->on('applications')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('application_status_old', 'fk_application_log_status_application_status_old')
-                ->references('application_status_id')->on('application_status')
+                ->references('application_status_id')->on('application_statuses')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('application_status_new', 'fk_application_log_status_application_status_new')
-                ->references('application_status_id')->on('application_status')
+                ->references('application_status_id')->on('application_statuses')
                 ->onUpdate('cascade')->onDelete('restrict');
         });
     }

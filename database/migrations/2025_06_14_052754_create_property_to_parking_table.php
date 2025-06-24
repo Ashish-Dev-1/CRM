@@ -12,15 +12,13 @@ return new class extends Migration {
     {
         Schema::create('property_to_parking', function (Blueprint $table) {
             $table->integer('property_to_parking_id')->primary();
-            $table->integer('property_id');
+            $table->unsignedInteger('property_id')->nullable();
             $table->integer('property_parking_id');
 
             $table->foreign('property_id', 'fk_property_to_parking_property_id')
                 ->references('property_id')->on('property')
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('property_parking_id', 'fk_property_to_parking_property_parking_id')
-                ->references('property_parking_id')->on('property_parking')
-                ->onUpdate('cascade')->onDelete('restrict');
+            // Foreign key constraint for property_parking_id removed due to migration order issue
         });
     }
 

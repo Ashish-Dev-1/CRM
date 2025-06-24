@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('property_to_features_custom', function (Blueprint $table) {
             $table->integer('property_to_features_custom_id')->primary();
-            $table->integer('property_id');
+            $table->unsignedInteger('property_id')->nullable();
             $table->string('property_feature', 200);
 
             $table->foreign('property_id', 'fk_property_to_features_custom_property_id')

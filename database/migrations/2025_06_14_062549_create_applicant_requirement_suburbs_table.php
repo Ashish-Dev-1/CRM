@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('ar_suburb_id')->nullable();
             // Foreign keys
             $table->foreign('ar_id', 'fk_applicant_requirement_suburb_ar_id')
-                ->references('ar_id')->on('applicant_requirement')
+                ->references('ar_id')->on('applicant_requirements')
                 ->onUpdate('no action')->onDelete('no action');
             $table->foreign('ar_suburb_id', 'fk_applicant_requirement_suburb_ar_suburb_id')
                 ->references('suburb_id')->on('suburb')

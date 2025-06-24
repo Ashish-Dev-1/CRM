@@ -23,9 +23,7 @@ return new class extends Migration {
             $table->foreign('property_offer_sale_attachments_created_by', 'fk_property_offer_sale_attachments_property_offer_sale_')
                 ->references('employee_id')->on('employee')
                 ->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('property_offer_sale_id', 'fk_property_offer_sale_attachments_property_offer_sale_id')
-                ->references('property_offer_sale_id')->on('property_offer_sale')
-                ->onUpdate('cascade')->onDelete('cascade');
+            // Foreign key constraint for property_offer_sale_id removed due to migration order issue
         });
     }
 

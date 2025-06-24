@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('keys_log_location', function (Blueprint $table) {
             $table->increments('keys_log_location_id');
-            $table->integer('property_id')->nullable();
-            $table->integer('keys_location')->nullable();
+            $table->unsignedInteger('property_id')->nullable();
+            $table->unsignedInteger('keys_location')->nullable();
             $table->integer('keys_log_location_updated_by')->nullable();
             $table->dateTime('keys_log_location_date_updated')->nullable();
 

@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('property_images', function (Blueprint $table) {
             $table->integer('image_id')->primary();
-            $table->integer('property_id');
+            $table->unsignedInteger('property_id');
             $table->string('filename', 100);
             $table->string('caption', 100)->default('');
             $table->integer('filesize')->default(0);

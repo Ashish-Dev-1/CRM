@@ -20,7 +20,7 @@ return new class extends Migration
 
             // Foreign keys
             $table->foreign('interested_applicant_updates_interested_applicant_id', 'fk_interested_applicant_updates_interested_applicant_up')
-                ->references('applicant_id')->on('applicant')
+                ->references('applicant_id')->on('applicants')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('interested_applicant_updates_created_by', 'fk_interested_applicant_updates_interested_applicant_up_1')
                 ->references('employee_id')->on('employee')

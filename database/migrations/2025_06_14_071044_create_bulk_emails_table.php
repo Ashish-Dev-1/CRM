@@ -29,8 +29,8 @@ return new class extends Migration
             $table->string('bulk_email_to_email', 320)->nullable();
             $table->string('bulk_email_cc_email', 320)->nullable();
             $table->string('bulk_email_bcc_email', 320)->nullable();
-            $table->integer('bulk_email_customer_type')->nullable();
-            $table->integer('bulk_email_property_id')->nullable();
+            $table->unsignedTinyInteger('bulk_email_customer_type')->nullable();
+            $table->unsignedInteger('bulk_email_property_id')->nullable();
             $table->integer('bulk_email_app_req_id')->nullable();
             $table->tinyInteger('bulk_email_sent')->default(2);
             $table->dateTime('bulk_email_date_created')->default(DB::raw('CURRENT_TIMESTAMP'));
@@ -43,7 +43,7 @@ return new class extends Migration
                 ->references('customer_type_id')->on('customer_type')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('bulk_email_app_req_id', 'fk_bulk_email_bulk_email_app_req_id')
-                ->references('ar_id')->on('applicant_requirement')
+                ->references('ar_id')->on('applicant_requirements')
                 ->onUpdate('no action')->onDelete('no action');
         });
     }

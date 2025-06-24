@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('property_updates', function (Blueprint $table) {
             $table->integer('property_updates_id')->primary();
-            $table->integer('property_updates_property_id')->nullable();
+            $table->unsignedInteger('property_updates_property_id')->nullable();
             $table->text('property_updates_notes_public')->nullable();
             $table->text('property_updates_notes_private')->nullable();
             $table->date('property_updates_property_next_review_date')->nullable();

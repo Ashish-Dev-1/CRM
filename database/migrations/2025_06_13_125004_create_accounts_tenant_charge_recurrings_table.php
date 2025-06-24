@@ -18,7 +18,7 @@ return new class extends Migration
             $table->smallInteger('tenant_charge_recurring_frequency')->nullable();
             $table->tinyInteger('tenant_charge_recurring_frequency_unit')->nullable();
             $table->date('tenant_charge_recurring_start_date')->nullable();
-            $table->date('tenant_charge_recurring_end_date')->default('0000-00-00');
+            $table->date('tenant_charge_recurring_end_date');
             $table->date('tenant_charge_recurring_next_processing_date')->nullable();
             $table->tinyInteger('tenant_charge_recurring_suspended')->nullable();
             $table->dateTime('tenant_charge_recurring_date_created')->nullable();

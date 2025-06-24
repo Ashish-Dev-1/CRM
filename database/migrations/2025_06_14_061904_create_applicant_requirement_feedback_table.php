@@ -34,7 +34,7 @@ return new class extends Migration
                 ->references('arp_id')->on('applicant_requirement_properties')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('applicant_requirement_feedback_ar_id', 'fk_applicant_requirement_feedback_applicant_requirement_feedbac')
-                ->references('ar_id')->on('applicant_requirement')
+                ->references('ar_id')->on('applicant_requirements')
                 ->onUpdate('cascade')->onDelete('restrict');
         });
     }

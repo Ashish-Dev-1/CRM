@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('guarantor_income_id');
             $table->integer('guarantor_income_guarantor_id')->nullable()->default(null);
             $table->decimal('guarantor_income_amount', 10, 2)->nullable()->default(null);
-            $table->tinyInteger('guarantor_income_frequency')->nullable()->default(null);
+            $table->unsignedTinyInteger('guarantor_income_frequency')->nullable()->default(null);
             $table->string('guarantor_income_source', 255)->nullable()->default(null);
 
             $table->foreign('guarantor_income_guarantor_id', 'fk_guarantor_income_guarantor_income_guarantor_id')

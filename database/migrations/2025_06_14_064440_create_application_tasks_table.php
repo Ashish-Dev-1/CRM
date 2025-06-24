@@ -30,13 +30,13 @@ return new class extends Migration
                 ->references('employee_id')->on('employee')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('application_id', 'fk_application_task_application_id')
-                ->references('application_id')->on('application')
+                ->references('application_id')->on('applications')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('application_task_type', 'fk_application_task_application_task_type')
-                ->references('application_task_type_id')->on('application_task_type')
+                ->references('application_task_type_id')->on('application_task_types')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('application_task_status', 'fk_application_task_application_task_status')
-                ->references('application_task_status_id')->on('application_task_status')
+                ->references('application_task_status_id')->on('application_task_statuses')
                 ->onUpdate('cascade')->onDelete('restrict');
         });
     }

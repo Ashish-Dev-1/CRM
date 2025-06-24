@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('certificate_development', function (Blueprint $table) {
+        Schema::create('certificate_developments', function (Blueprint $table) {
             $table->integer('certificate_id', true);
             $table->integer('certificate_development')->nullable();
             $table->tinyInteger('certificate_type')->nullable();
@@ -35,7 +35,7 @@ return new class extends Migration
                 ->references('development_id')->on('development')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('certificate_type', 'fk_certificate_development_certificate_type')
-                ->references('certificate_type_id')->on('certificate_type')
+                ->references('certificate_type_id')->on('certificate_types')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('certificate_renewal_contractor', 'fk_certificate_development_certificate_renewal_contractor')
                 ->references('directory_id')->on('directory')

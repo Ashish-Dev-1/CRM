@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('referral_payments', function (Blueprint $table) {
             $table->id('referral_payments_id'); // int(11) PRIMARY KEY
-            $table->integer('referral_payments_referral_id')->nullable();
+            $table->unsignedBigInteger('referral_payments_referral_id')->nullable();
             $table->decimal('referral_payments_amount', 10, 2)->nullable();
             $table->date('referral_payments_date_paid')->nullable();
             $table->dateTime('referral_payments_date_created')->nullable();

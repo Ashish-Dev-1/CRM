@@ -8,7 +8,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('customer_type', function (Blueprint $table) {
-            $table->integer('customer_type_id')->primary();
+            $table->unsignedTinyInteger('customer_type_id')->primary();
             $table->string('customer_type_name', 20)->nullable();
             $table->string('customer_type_description', 30)->nullable();
             $table->string('customer_type_description2', 30)->nullable();

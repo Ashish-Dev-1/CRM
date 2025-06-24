@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('calendar_event_inspections', function (Blueprint $table) {
             $table->integer('calendar_event_inspection_id', true);
             $table->integer('calendar_event_inspection_calendar_event_id')->nullable();
-            $table->tinyInteger('calendar_event_inspection_cleanliness')->nullable();
+            $table->integer('calendar_event_inspection_cleanliness')->nullable();
             $table->tinyInteger('calendar_event_inspection_gardens')->nullable();
             $table->tinyInteger('calendar_event_inspection_pets')->nullable();
             $table->tinyInteger('calendar_event_inspection_smoking')->nullable();
@@ -28,10 +28,10 @@ return new class extends Migration
                 ->references('calendar_event_id')->on('calendar_event')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('calendar_event_inspection_cleanliness', 'fk_calendar_event_inspection_calendar_event_inspection_clea')
-                ->references('calendar_event_inspection_cleanliness_id')->on('calendar_event_inspection_cleanliness')
+                ->references('calendar_event_inspection_cleanliness_id')->on('calendar_event_inspection_cleanlinesses')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('calendar_event_inspection_gardens', 'fk_calendar_event_inspection_calendar_event_inspection_gardens')
-                ->references('calendar_event_inspection_cleanliness_id')->on('calendar_event_inspection_cleanliness')
+                ->references('calendar_event_inspection_gardens_id')->on('calendar_event_inspection_gardenses')
                 ->onUpdate('cascade')->onDelete('restrict');
         });
     }

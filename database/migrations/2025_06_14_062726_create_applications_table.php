@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('applications', function (Blueprint $table) {
             $table->integer('application_id')->primary();
             $table->string('application_token', 40)->nullable();
-            $table->integer('application_property')->nullable();
+            $table->unsignedInteger('application_property')->nullable();
             $table->integer('application_property_room')->nullable();
             $table->date('application_move_in_date')->nullable();
             $table->tinyInteger('application_length_of_stay')->nullable();
@@ -35,7 +35,7 @@ return new class extends Migration
             $table->string('application_company_nature', 255)->nullable();
             $table->text('application_business_address_history')->nullable();
             $table->string('application_accountant_company_name', 255)->nullable();
-            $table->tinyInteger('application_accountant_title')->nullable();
+            $table->integer('application_accountant_title')->nullable();
             $table->string('application_accountant_first_name', 255)->nullable();
             $table->string('application_accountant_surname', 255)->nullable();
             $table->string('application_accountant_telephone_numbers', 255)->nullable();
@@ -45,7 +45,7 @@ return new class extends Migration
             $table->string('application_accountant_town_city', 255)->nullable();
             $table->string('application_accountant_post_code', 8)->nullable();
             $table->string('application_solicitor_company_name', 255)->nullable();
-            $table->tinyInteger('application_solicitor_title')->nullable();
+            $table->integer('application_solicitor_title')->nullable();
             $table->string('application_solicitor_first_name', 255)->nullable();
             $table->string('application_solicitor_surname', 255)->nullable();
             $table->string('application_solicitor_telephone_numbers', 255)->nullable();
@@ -55,7 +55,7 @@ return new class extends Migration
             $table->string('application_solicitor_town_city', 255)->nullable();
             $table->string('application_solicitor_post_code', 8)->nullable();
             $table->string('application_trade2_company_name', 255)->nullable();
-            $table->tinyInteger('application_trade2_title')->nullable();
+            $table->integer('application_trade2_title')->nullable();
             $table->string('application_trade2_first_name', 255)->nullable();
             $table->string('application_trade2_surname', 255)->nullable();
             $table->string('application_trade2_telephone_numbers', 255)->nullable();
@@ -65,7 +65,7 @@ return new class extends Migration
             $table->string('application_trade2_town_city', 255)->nullable();
             $table->string('application_trade2_post_code', 8)->nullable();
             $table->string('application_trade_company_name', 255)->nullable();
-            $table->tinyInteger('application_trade_title')->nullable();
+            $table->integer('application_trade_title')->nullable();
             $table->string('application_trade_first_name', 255)->nullable();
             $table->string('application_trade_surname', 255)->nullable();
             $table->string('application_trade_telephone_numbers', 255)->nullable();
@@ -89,7 +89,7 @@ return new class extends Migration
                 ->references('title_id')->on('title')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('application_bank_name', 'fk_application_application_bank_name')
-                ->references('bank_id')->on('bank')
+                ->references('bank_id')->on('banks')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('application_employee', 'fk_application_application_employee')
                 ->references('employee_id')->on('employee')
@@ -110,10 +110,10 @@ return new class extends Migration
                 ->references('property_room_letting_id')->on('property_room_letting')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('application_status', 'fk_application_application_status')
-                ->references('application_status_id')->on('application_status')
+                ->references('application_status_id')->on('application_statuses')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('application_type', 'fk_application_application_type')
-                ->references('application_type_id')->on('application_type')
+                ->references('application_type_id')->on('application_types')
                 ->onUpdate('cascade')->onDelete('restrict');
             // Consider adding indexes or foreign keys as appropriate for your schema.
         });

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('applicant_updates_created_by')->nullable();
              // Foreign keys
             $table->foreign('applicant_updates_applicant_id', 'fk_applicant_updates_applicant_updates_applicant_id')
-                ->references('applicant_id')->on('applicant')
+                ->references('applicant_id')->on('applicants')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('applicant_updates_created_by', 'fk_applicant_updates_applicant_updates_created_by')
                 ->references('employee_id')->on('employee')

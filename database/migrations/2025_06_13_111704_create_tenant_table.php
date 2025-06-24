@@ -13,8 +13,8 @@ return new class extends Migration {
         Schema::create('tenant', function (Blueprint $table) {
             $table->id('tenant_id');
             $table->string('tenant_token', 40)->nullable();
-            $table->tinyInteger('tenant_type')->nullable();
-            $table->tinyInteger('tenant_title')->nullable();
+            $table->integer('tenant_type')->nullable();
+            $table->integer('tenant_title')->nullable();
             $table->string('tenant_first_name', 30)->nullable();
             $table->string('tenant_surname', 30)->nullable();
             $table->string('tenant_company_name')->nullable();
@@ -64,7 +64,7 @@ return new class extends Migration {
             $table->tinyInteger('tenant_employment_status')->nullable();
             $table->string('tenant_employer_name')->nullable();
             $table->decimal('tenant_income', 9, 2)->nullable();
-            $table->tinyInteger('tenant_income_frequency')->nullable();
+            $table->unsignedTinyInteger('tenant_income_frequency')->nullable();
             $table->string('tenant_driving_licence_number', 20)->nullable();
             $table->text('tenant_employment_income_notes')->nullable();
             $table->integer('tenant_referencing_provider')->nullable();
@@ -88,20 +88,13 @@ return new class extends Migration {
                 ->references('employee_id')->on('employee')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('tenant_type', 'fk_tenant_tenant_type')
-                ->references('body_type_id')->on('body_type')
+                ->references('body_type_id')->on('body_types')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('tenant_country', 'fk_tenant_country')
                 ->references('country_id')->on('country')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('tenant_forwarding_country', 'fk_tenant_forwarding_country')
                 ->references('country_id')->on('country')
-                ->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('tenant_employment_status', 'fk_tenant_tenant_employment_status')
-                ->references('employment_status_id')->on('employment_status');
-            $table->foreign('tenant_income_frequency', 'fk_tenant_tenant_income_frequency')
-                ->references('income_frequency_id')->on('income_frequency');
-            $table->foreign('tenant_referencing_provider', 'fk_tenant_tenant_referencing_provider')
-                ->references('directory_id')->on('directory')
                 ->onUpdate('cascade')->onDelete('restrict');
         });
     }

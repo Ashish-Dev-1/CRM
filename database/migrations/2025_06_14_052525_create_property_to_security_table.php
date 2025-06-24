@@ -12,15 +12,13 @@ return new class extends Migration {
     {
         Schema::create('property_to_security', function (Blueprint $table) {
             $table->integer('property_to_security_id')->primary();
-            $table->integer('property_id');
+            $table->unsignedInteger('property_id')->nullable();
             $table->tinyInteger('property_security_id');
 
             $table->foreign('property_id', 'fk_property_to_security_property_id')
                 ->references('property_id')->on('property')
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('property_security_id', 'fk_property_to_security_property_security_id')
-                ->references('property_security_id')->on('property_security')
-                ->onUpdate('cascade')->onDelete('cascade');
+            // Foreign key constraint for property_security_id removed due to migration order issue
         });
     }
 

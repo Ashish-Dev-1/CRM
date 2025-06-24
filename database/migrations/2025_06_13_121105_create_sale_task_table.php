@@ -29,9 +29,7 @@ return new class extends Migration {
             $table->foreign('sale_task_updated_by', 'fk_sale_task_sale_task_updated_by')
                 ->references('employee_id')->on('employee')
                 ->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('sale_id', 'fk_sale_task_sale_id')
-                ->references('sale_id')->on('sale')
-                ->onUpdate('cascade')->onDelete('cascade');
+            // Foreign key constraint for sale_id removed due to migration order issue
             $table->foreign('sale_task_type', 'fk_sale_task_sale_task_type')
                 ->references('sale_task_type_id')->on('sale_task_type')
                 ->onUpdate('cascade')->onDelete('restrict');

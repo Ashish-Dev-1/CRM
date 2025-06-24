@@ -12,12 +12,12 @@ return new class extends Migration {
     {
         Schema::create('property_room', function (Blueprint $table) {
             $table->integer('property_room_id')->primary();
-            $table->integer('property_id')->nullable();
+            $table->unsignedInteger('property_id')->nullable();
             $table->string('property_room_name', 120)->nullable();
             $table->text('property_room_description')->nullable();
             $table->decimal('property_room_length', 6, 2)->nullable();
             $table->decimal('property_room_width', 6, 2)->nullable();
-            $table->tinyInteger('property_room_dimension_unit')->nullable();
+            $table->integer('property_room_dimension_unit')->nullable();
             $table->string('property_room_dimension_text', 120)->nullable();
             $table->text('property_room_images_url')->nullable();
             $table->tinyInteger('property_room_sort')->nullable();
