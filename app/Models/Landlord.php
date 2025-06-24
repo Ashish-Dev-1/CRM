@@ -262,7 +262,7 @@ class Landlord extends Model
     /**
      * Get the Country associated with this record.
      */
-    public function country(): BelongsTo
+    public function landlordCountry(): BelongsTo
     {
         return $this->belongsTo(Country::class, 'landlord_country', 'country_id');
     }
@@ -286,7 +286,7 @@ class Landlord extends Model
     /**
      * Get the Employee associated with this record.
      */
-    public function by(): BelongsTo
+    public function updatedBy(): BelongsTo
     {
         return $this->belongsTo(Employee::class, 'landlord_updated_by', 'employee_id');
     }
@@ -310,7 +310,7 @@ class Landlord extends Model
     /**
      * Get the LandlordStatus associated with this record.
      */
-    public function status(): BelongsTo
+    public function landlordStatus(): BelongsTo
     {
         return $this->belongsTo(LandlordStatus::class, 'landlord_status', 'landlord_status_id');
     }

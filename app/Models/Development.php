@@ -165,7 +165,7 @@ class Development extends Model
     /**
      * Get the Directory associated with this record.
      */
-    public function contractor(): BelongsTo
+    public function defaultGscContractor(): BelongsTo
     {
         return $this->belongsTo(Directory::class, 'development_default_epc_contractor', 'directory_id');
     }
@@ -173,7 +173,7 @@ class Development extends Model
     /**
      * Get the Directory associated with this record.
      */
-    public function contractor(): BelongsTo
+    public function defaultEpcContractor(): BelongsTo
     {
         return $this->belongsTo(Directory::class, 'development_default_electrical_contractor', 'directory_id');
     }
@@ -181,7 +181,7 @@ class Development extends Model
     /**
      * Get the Directory associated with this record.
      */
-    public function contractor(): BelongsTo
+    public function defaultElectricalContractor(): BelongsTo
     {
         return $this->belongsTo(Directory::class, 'development_default_pat_contractor', 'directory_id');
     }
@@ -189,7 +189,7 @@ class Development extends Model
     /**
      * Get the Directory associated with this record.
      */
-    public function contractor(): BelongsTo
+    public function defaultFireAlarmContractor(): BelongsTo
     {
         return $this->belongsTo(Directory::class, 'development_default_fire_alarm_contractor', 'directory_id');
     }
@@ -197,7 +197,7 @@ class Development extends Model
     /**
      * Get the Directory associated with this record.
      */
-    public function contractor(): BelongsTo
+    public function defaultEmergencyLightingContractor(): BelongsTo
     {
         return $this->belongsTo(Directory::class, 'development_default_emergency_lighting_contractor', 'directory_id');
     }

@@ -225,7 +225,7 @@ class CalendarEvent extends Model
     /**
      * Get the Company associated with this record.
      */
-    public function id(): BelongsTo
+    public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class, 'calendar_event_company_id', 'company_id');
     }
@@ -281,7 +281,7 @@ class CalendarEvent extends Model
     /**
      * Get the Employee associated with this record.
      */
-    public function by(): BelongsTo
+    public function updatedBy(): BelongsTo
     {
         return $this->belongsTo(Employee::class, 'calendar_event_updated_by', 'employee_id');
     }
@@ -313,7 +313,7 @@ class CalendarEvent extends Model
     /**
      * Get the CalendarEventAttendeeType associated with this record.
      */
-    public function type(): BelongsTo
+    public function attendeeType(): BelongsTo
     {
         return $this->belongsTo(CalendarEventAttendeeType::class, 'calendar_event_attendee_type', 'calendar_event_attendee_type_id');
     }
@@ -321,7 +321,7 @@ class CalendarEvent extends Model
     /**
      * Get the ValuationAppointmentType associated with this record.
      */
-    public function type(): BelongsTo
+    public function valuationAppointmentType(): BelongsTo
     {
         return $this->belongsTo(ValuationAppointmentType::class, 'calendar_event_valuation_appointment_type', 'valuation_appointment_type_id');
     }
@@ -345,7 +345,7 @@ class CalendarEvent extends Model
     /**
      * Get the CalendarEventRecurring associated with this record.
      */
-    public function id(): BelongsTo
+    public function recurring(): BelongsTo
     {
         return $this->belongsTo(CalendarEventRecurring::class, 'calendar_event_recurring_id', 'calendar_event_recurring_id');
     }
@@ -353,7 +353,7 @@ class CalendarEvent extends Model
     /**
      * Get the CalendarEventInspectionType associated with this record.
      */
-    public function type(): BelongsTo
+    public function inspectionType(): BelongsTo
     {
         return $this->belongsTo(CalendarEventInspectionType::class, 'calendar_event_inspection_type', 'calendar_event_inspection_type_id');
     }
@@ -361,7 +361,7 @@ class CalendarEvent extends Model
     /**
      * Get the CalendarEventSurveyType associated with this record.
      */
-    public function type(): BelongsTo
+    public function surveyType(): BelongsTo
     {
         return $this->belongsTo(CalendarEventSurveyType::class, 'calendar_event_survey_type', 'calendar_event_survey_type_id');
     }
@@ -369,7 +369,7 @@ class CalendarEvent extends Model
     /**
      * Get the CalendarEventTimeOffType associated with this record.
      */
-    public function type(): BelongsTo
+    public function timeOffType(): BelongsTo
     {
         return $this->belongsTo(CalendarEventTimeOffType::class, 'calendar_event_time_off_type', 'calendar_event_time_off_type_id');
     }
@@ -401,7 +401,7 @@ class CalendarEvent extends Model
     /**
      * Get the ExtraHoursRewardType associated with this record.
      */
-    public function type(): BelongsTo
+    public function extraHoursRewardType(): BelongsTo
     {
         return $this->belongsTo(ExtraHoursRewardType::class, 'calendar_event_extra_hours_reward_type', 'id');
     }
